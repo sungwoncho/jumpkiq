@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#home'
 
-
+  # signup uses angular
+  get 'signup/*all' => 'signup#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -15,6 +15,6 @@
 //= require angular
 //= require angular-animate
 //= require angular-ui-router
-//= require turbolinks
+//= require angular-rails-templates
 //= require bootstrap.min
 //= require_tree .
