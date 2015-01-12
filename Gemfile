@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'font-awesome-sass', '~> 4.2.0'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
