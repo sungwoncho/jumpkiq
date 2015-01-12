@@ -45,5 +45,6 @@ group :production do
 end
 
 gem 'font-awesome-sass', '~> 4.2.0'
-gem "bower-rails", "~> 0.9.1"
+gem 'bower-rails', '~> 0.9.1'
 gem 'devise'
+gem 'simple_form'
