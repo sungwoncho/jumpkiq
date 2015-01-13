@@ -18,4 +18,5 @@
 //= require angular-rails-templates
 //= require bootstrap.min
 //= require angular-devise
+//= require angular-flash
 //= require_tree .

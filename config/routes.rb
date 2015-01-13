@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   # signup uses angular
-  get 'signup/*all' => 'signup#new'
+  get '*path' => 'application#index'
 
-  resource :users, only: :show, path: 'my'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

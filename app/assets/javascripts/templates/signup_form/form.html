@@ -14,6 +14,10 @@
         <a ui-sref-active='active' ui-sref='.account'><span>4</span> Account</a>
       </div>
 
+      <div flash-alert active-class="in alert" class="fade text-center">
+        <span class="alert-message">{{ flash.message }}</span>
+      </div>
+
       <form id='signup-form' ng-submit='processForm()'>
         <div id="form-views" ui-view></div>
       </form>

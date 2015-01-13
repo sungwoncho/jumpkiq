@@ -10,7 +10,8 @@
       "angular": "latest",
       "angular-ui-router": "latest",
       "angular-animate": "latest",
-      "angular-devise": "latest"
+      "angular-devise": "latest",
+      "angular-flash": "latest"
     }
   }
 }
