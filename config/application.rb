@@ -33,5 +33,7 @@ module Sidekiq
         request_specs: false
       g.fixtures_replacement :factory_girl, dir: 'spec/factories'
     end
+
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
   end
 end

@@ -1,3 +1,49 @@
 // Place all the styles related to the signup controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* form styling */
+#form-container {
+  margin-bottom: 20px;
+
+  h3 {
+    margin-bottom: 30px;
+  }
+}
+
+/* numbered buttons */
+#status-buttons {
+  a {
+    color: $gray-font;
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    min-width: 70px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    text-decoration:none;
+  }
+
+  a.active {
+    text-decoration: none;
+
+    span {
+      background:#000;
+      color: #fff;
+    }
+  }
+
+  span {
+    background: #DDDDDD;
+    display:block;
+    height:30px;
+    margin:0 auto 10px;
+    padding-top:6.5px;
+    width:30px;
+    border-radius:50%;
+  }
+}

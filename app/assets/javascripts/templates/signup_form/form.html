@@ -1,3 +1,27 @@
-yo
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
 
-<div ui-view></div>
+    <div id="form-container">
+
+      <div class="page-header text-center">
+        <h2>Get Sidekiq!</h2>
+      </div>
+
+      <div id="status-buttons" class="text-center">
+        <a ui-sref-active='active' ui-sref='.measurements'><span>1</span> About you</a>
+        <a ui-sref-active='active' ui-sref='.needs'><span>2</span> Needs</a>
+        <a ui-sref-active='active' ui-sref='.kiqs'><span>3</span> Kiqs</a>
+        <a ui-sref-active='active' ui-sref='.account'><span>4</span> Account</a>
+      </div>
+
+      <form id='signup-form' ng-submit='processForm()'>
+        <div id="form-views" ui-view></div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<pre>
+  {{formData}}
+</pre>

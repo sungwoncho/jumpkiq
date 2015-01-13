@@ -1,1 +1,30 @@
-yo
+<div class="form-group row">
+  <input type="checkbox" value='longsleeve' id='longsleeve' ng-model='formData.longsleeve'>
+  <label for="longsleeve">Long-sleeve</label>
+
+  <input type="checkbox" value='shortsleeve' id='shortsleeve' ng-model='formData.shortsleeve'>
+  <label for="shortsleeve">Short-sleeve</label>
+
+  <input type="checkbox" value='polo_shirt' id='polo_shirt' ng-model='formData.polo_shirt'>
+  <label for="polo_shirt">Polo shirt</label>
+
+  <input type="checkbox" value='pants' id='pants' ng-model='formData.pants'>
+  <label for="pants">Pants</label>
+
+  <input type="checkbox" value='shorts' id='shorts' ng-model='formData.shorts'>
+  <label for="shorts">Shorts</label>
+</div>
+
+<div class="form-group row">
+  <div class="col-xs-3">
+    <a ui-sref='signup.measurements' class='btn btn-block btn-default'>
+      <span class="glyphicon glyphicon-circle-arrow-left"></span> Prev Section
+    </a>
+  </div>
+
+  <div class="col-xs-3 col-xs-offset-6">
+    <a ui-sref='signup.kiqs' class='btn btn-block btn-info'>
+      Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+  </div>
+</div>

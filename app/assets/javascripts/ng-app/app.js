@@ -2,7 +2,8 @@ angular
   .module('sidekiq', [
     'ngAnimate',
     'ui.router',
-    'templates'
+    'templates',
+    'Devise'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
@@ -18,13 +19,13 @@ angular
         url: '/measurements',
         templateUrl: 'signup_form/measurements.html'
       })
-      .state('signup.sizes', {
-        url: '/sizes',
-        templateUrl: 'signup_form/sizes.html'
-      })
       .state('signup.needs', {
         url: '/needs',
         templateUrl: 'signup_form/needs.html'
+      })
+      .state('signup.kiqs', {
+        url: '/kiqs',
+        templateUrl: 'signup_form/kiqs.html'
       })
       .state('signup.account', {
         url: '/account',
