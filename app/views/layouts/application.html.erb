@@ -7,9 +7,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app='sidekiq'>
 
-  <%= render 'layouts/header' %>
+  <div header></div>
 
   <div class='container'>
     <%= yield %>

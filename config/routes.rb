@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#home'
 
-  # signup uses angular
+  # Let angular deal with any other paths
   get '*path' => 'application#index'
 
 
