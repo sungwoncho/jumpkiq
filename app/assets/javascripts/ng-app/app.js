@@ -15,6 +15,17 @@ angular
     flashProvider.successClassnames.push("alert-success");
 
     $stateProvider
+      .state('home', {
+        url: '/',
+        templateUrl: 'static_pages/home.html'
+      })
+
+      .state('login', {
+        url: '/login',
+        templateUrl: 'static_pages/login.html',
+        controller: 'loginController'
+      })
+
       .state('signup', {
         url: '/signup',
         templateUrl: 'signup_form/form.html',
