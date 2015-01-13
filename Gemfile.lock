@@ -40,8 +40,6 @@ GEM
       railties (>= 3.1)
       sprockets
       tilt
-    angular_rails_csrf (1.0.3)
-      rails (>= 3, < 5)
     arel (6.0.0)
     bcrypt (3.1.9)
     binding_of_caller (0.7.2)
@@ -268,7 +266,6 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
-  angular_rails_csrf
   bower-rails (~> 0.9.1)
   byebug
   capybara
