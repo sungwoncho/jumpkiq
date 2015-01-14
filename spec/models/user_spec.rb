@@ -10,6 +10,12 @@ RSpec.describe User, :type => :model do
     it { should have_one(:stylist) }
   end
 
+  describe 'validation' do
+    it { should validate_presence_of(:height) }
+    it { should validate_presence_of(:weight) }
+    it { should validate_presence_of(:casual_shirt_size) }
+  end
+
   let!(:stylist) { create(:stylist) }
 
   describe 'callbacks' do
