@@ -19,4 +19,5 @@
 //= require bootstrap.min
 //= require angular-devise
 //= require angular-flash
+//= require angular-resource
 //= require_tree .

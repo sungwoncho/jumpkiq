@@ -10,9 +10,14 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  scope 'api', defaults: { format: :json } do
+    get 'users' => 'users#show'
+  end
+
   # angular routes
   get '/signup/*all' => 'application#index'
-
+  get '/profile' => 'application#index'
+  get '/profile/*all' => 'application#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

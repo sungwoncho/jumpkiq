@@ -1,6 +1,7 @@
 angular
   .module('sidekiq', [
     'ngAnimate',
+    'ngResource',
     'ui.router',
     'templates',
     'Devise',

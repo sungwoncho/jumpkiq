@@ -11,7 +11,8 @@
       "angular-ui-router": "latest",
       "angular-animate": "latest",
       "angular-flash": "latest",
-      "angular-devise": "latest"
+      "angular-devise": "latest",
+      "angular-resource": "latest"
     }
   }
 }
