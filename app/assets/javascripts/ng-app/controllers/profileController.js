@@ -1,8 +1,8 @@
 angular.module('sidekiq')
-  .controller('profileController', ['$scope', 'userFactory', 'flash', function ($scope, userFactory, flash) {
+  .controller('profileController', ['$scope', 'Users', 'flash', function ($scope, Users, flash) {
 
     // Get information on the current user
-    userFactory.get({}, function (user) {
+    Users.get({}, function (user) {
       $scope.user = user;
     })
 
