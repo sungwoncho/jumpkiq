@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  def show
-    head 404 unless user_signed_in?
+  before_action :authenticate_user!
 
+  def show
     @user = current_user
   end
 end

@@ -32,8 +32,8 @@ RSpec.describe UsersController, :type => :controller do
         get :show, format: :json
       end
 
-      it 'returns 404 status' do
-        expect(response.status).to eq 404
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
       end
     end
   end
