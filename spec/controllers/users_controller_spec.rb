@@ -37,4 +37,54 @@ RSpec.describe UsersController, :type => :controller do
       end
     end
   end
+
+  describe 'PUT update' do
+    context 'when not logged in' do
+      before :each do
+        sign_out user
+        put :update, format: :json
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'when logged in' do
+
+      context 'with valid params' do
+
+        before :each do
+          put :update, user: attributes_for(:user, classic_kiq: true), format: :json
+          user.reload
+        end
+
+        it 'assigns the current user to @user' do
+          expect(assigns(:user)).to eq user
+        end
+
+        it 'updates the user' do
+          expect(user.classic_kiq).to eq true
+        end
+
+        it 'returns 200 status' do
+          expect(response.status).to eq 200
+        end
+
+      end
+
+
+      context 'with invalid params' do
+
+        before :each do
+          put :update, user: attributes_for(:user, height: nil), format: :json
+          user.reload
+        end
+
+        it 'returns 422 status' do
+          expect(response.status).to eq 422
+        end
+      end
+    end
+  end
 end
