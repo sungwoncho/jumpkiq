@@ -15,6 +15,7 @@ angular
     flashProvider.successClassnames.push("alert-success");
 
     $stateProvider
+
       .state('signup', {
         url: '/signup',
         templateUrl: 'signup_form/form.html',
@@ -42,7 +43,8 @@ angular
 
       .state('profile', {
         url: '/profile',
-        templateUrl: 'profile/profile.html'
+        templateUrl: 'profile/profile.html',
+        controller: 'profileController'
       });
 
 
