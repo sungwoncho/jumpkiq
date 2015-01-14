@@ -5,3 +5,40 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'faker'
+
+User.destroy_all
+Stylist.destroy_all
+
+User.create!(
+  firstname: Faker::Name.first_name,
+  lastname: Faker::Name.last_name,
+  email: "test@test.com",
+  password: "pass1234",
+  password_confirmation: "pass1234"
+)
+
+(1..10).each do |n|
+  User.create!(
+  firstname: Faker::Name.first_name,
+  lastname: Faker::Name.last_name,
+  email: "test_#{n}@example.com",
+  password: "pass1234",
+  password_confirmation: "pass1234"
+  )
+end
+
+puts "Created #{User.count} users."
+
+(1..10).each do |n|
+  Stylist.create!(
+  firstname: Faker::Name.first_name,
+  lastname: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password: "pass1234",
+  password_confirmation: "pass1234",
+  )
+end
+
+puts "Created #{Stylist.count} stylists"
