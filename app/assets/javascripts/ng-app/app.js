@@ -46,7 +46,17 @@ angular
         url: '/profile',
         templateUrl: 'profile/profile.html',
         controller: 'profileController'
-      });
+      })
+
+        .state('profile.main', {
+          url: '/main',
+          templateUrl: 'profile/main.html'
+        })
+
+        .state('profile.kiqs', {
+          url: '/kiqs',
+          templateUrl: 'profile/kiqs.html'
+        })
 
 
     $urlRouterProvider.otherwise('/')

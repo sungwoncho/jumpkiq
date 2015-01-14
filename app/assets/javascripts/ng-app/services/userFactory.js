@@ -2,5 +2,9 @@
 
 angular.module('sidekiq')
   .factory('userFactory', ['$resource', function($resource) {
-    return $resource('api/users/', {format: 'json'})
+    return $resource('api/users/', {format: 'json'}, {
+      update: {
+        method: 'PUT'
+      }
+    })
   }]);
