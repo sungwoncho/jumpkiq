@@ -50,12 +50,18 @@ angular
 
         .state('profile.main', {
           url: '/main',
-          templateUrl: 'profile/main.html'
+          views: {
+            'aside': { templateUrl: 'profile/stylist.html' },
+            'body': { templateUrl: 'profile/main.html' }
+          }
         })
 
         .state('profile.kiqs', {
           url: '/kiqs',
-          templateUrl: 'profile/kiqs.html'
+          views: {
+            'aside': { templateUrl: 'profile/stylist.html' },
+            'body': { templateUrl: 'profile/kiqs.html' }
+          }
         })
 
 

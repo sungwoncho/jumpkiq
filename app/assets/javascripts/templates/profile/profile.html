@@ -1,12 +1,9 @@
 <div class="row">
-  <div class="col-md-3">
-    <h3>{{ user.stylist.firstname }} {{ user.stylist.lastname }}</h3>
-    <p>Your personal stylist</p>
-  </div>
+  <aside class="col-md-3">
+    <div ui-view='aside'></div>
+  </aside>
 
   <div class="col-md-9">
-
-    <div ui-view></div>
-
+    <div ui-view='body'></div>
   </div>
 </div>
