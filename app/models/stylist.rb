@@ -4,6 +4,6 @@ class Stylist < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :users, through: :assignments
 end
