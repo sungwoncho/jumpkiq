@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:height, :weight, :casual_shirt_size,
+      params.require(:user).permit(:firstname, :lastname,
+      :height, :weight, :casual_shirt_size,
       :long_sleeve, :short_sleeve, :polo_shirt, :pants, :shorts,
       :smart_kiq, :casual_kiq, :hipster_kiq, :classic_kiq)
     end

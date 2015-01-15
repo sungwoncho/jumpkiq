@@ -1,1 +1,25 @@
-edit size
+<div flash-alert active-class="in alert" class="fade text-center">
+  <span class="alert-message">{{ flash.message }}</span>
+</div>
+
+<form id='profile-form' ng-submit='updateUser()'>
+  <label for="height">Height</label>
+  <input type="number" value='height' id='height' class='form-control' ng-model='user.height'>
+
+  <label for="weight">Weight</label>
+  <input type="number" value='weight' id='weight' class='form-control' ng-model='user.weight'>
+
+  <label for="casual-shirt-size">Casual Shirt Size</label>
+  <select class="form-control" name='casual-shirt-size' ng-model="user.casual_shirt_size">
+    <option value='xs'>XS</option>
+    <option value='s'>S</option>
+    <option value='m'>M</option>
+    <option value='l'>L</option>
+    <option value='xl'>XL</option>
+    <option value='xxl'>XXL</option>
+    <option value='other'>Other</option>
+  </select>
+
+
+  <button type='submit' class='btn btn-success'>Complete</button>
+</form>

@@ -59,27 +59,27 @@ angular
         })
 
         .state('profile.edit', {
-          url: '/edit',
+          url: '',
           templateUrl: 'profile/edit.html'
         })
 
           .state('profile.edit.profile', {
-            url: '',
+            url: '/edit',
             templateUrl: 'profile/edit_profile.html'
           })
 
           .state('profile.edit.billing', {
-            url: '',
+            url: '/edit',
             templateUrl: 'profile/edit_billing.html'
           })
 
           .state('profile.edit.shipping', {
-            url: '',
+            url: '/edit',
             templateUrl: 'profile/edit_shipping.html'
           })
 
           .state('profile.edit.size', {
-            url: '',
+            url: '/edit',
             templateUrl: 'profile/edit_size.html'
           })
 

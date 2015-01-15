@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114041844) do
+ActiveRecord::Schema.define(version: 20150115031406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20150114041844) do
     t.boolean  "casual_kiq",             default: false
     t.boolean  "hipster_kiq",            default: false
     t.boolean  "classic_kiq",            default: false
-    t.boolean  "stylist",                default: false
     t.string   "firstname"
     t.string   "lastname"
   end

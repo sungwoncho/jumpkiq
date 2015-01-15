@@ -6,7 +6,7 @@ angular.module('sidekiq')
       $scope.user = user;
     })
 
-    $scope.processKiqForm = function() {
+    $scope.updateUser = function() {
       $scope.user.$update(function() {
         flash.success = "Successfully updated your Kiqs"
       })

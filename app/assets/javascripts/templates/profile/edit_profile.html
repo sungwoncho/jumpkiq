@@ -1,2 +1,14 @@
-profile edit
-<div ui-view='edit_body'></div>
+<div flash-alert active-class="in alert" class="fade text-center">
+  <span class="alert-message">{{ flash.message }}</span>
+</div>
+
+<form id='profile-form' ng-submit='updateUser()'>
+  <label for="firstname">First name</label>
+  <input type="text" value='firstname' id='firstname' class='form-control' ng-model='user.firstname'>
+
+  <label for="lastname">Last name</label>
+  <input type="text" value='lastname' id='lastname' class='form-control' ng-model='user.lastname'>
+
+
+  <button type='submit' class='btn btn-success'>Complete</button>
+</form>
