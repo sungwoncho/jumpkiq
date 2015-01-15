@@ -8,6 +8,7 @@ RSpec.describe User, :type => :model do
   describe 'association' do
     it { should have_one(:assignment).dependent(:destroy) }
     it { should have_one(:stylist) }
+    it { should have_one(:address).dependent(:destroy) }
   end
 
   describe 'validation' do

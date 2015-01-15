@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_one :assignment, dependent: :destroy
   has_one :stylist, through: :assignment
+  has_one :address, dependent: :destroy
 
   validates_presence_of :height
   validates_presence_of :weight
