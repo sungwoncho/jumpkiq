@@ -1,22 +1,9 @@
-<div flash-alert active-class="in alert" class="fade text-center">
-  <span class="alert-message">{{ flash.message }}</span>
+<div class="row">
+  <aside class="col-md-3">
+    <div ng-include="'profile/partial/stylist.html'"></div>
+  </aside>
+
+  <div class="col-md-9">
+    <div ng-include="'profile/partial/kiqs_form.html'"></div>
+  </div>
 </div>
-
-<form id='kiq-form' ng-submit='processKiqForm()'>
-  <input type="checkbox" value='SmartKiq' id='SmartKiq' ng-checked='user.smart_kiq' ng-model='user.smart_kiq'>
-  <label for="SmartKiq">SmartKiq</label>
-
-  <input type="checkbox" value='CasualKiq' id='CasualKiq' ng-checked='user.casual_kiq' ng-model='user.casual_kiq'>
-  <label for="CasualKiq">CasualKiq</label>
-
-  <input type="checkbox" value='HipsterKiq' id='HipsterKiq' ng-checked='user.hipster_kiq' ng-model='user.hipster_kiq'>
-  <label for="HipsterKiq">HipsterKiq</label>
-
-  <input type="checkbox" value='ClassicKiq' id='ClassicKiq' ng-checked='user.classic_kiq' ng-model='user.classic_kiq'>
-  <label for="ClassicKiq">ClassicKiq</label>
-
-  <button type='submit' class='btn btn-success'>Complete</button>
-  <a ui-sref='profile.main' class='btn btn-info'>
-    <span class="glyphicon glyphicon-circle-arrow-left"></span> Back
-  </a>
-</form>

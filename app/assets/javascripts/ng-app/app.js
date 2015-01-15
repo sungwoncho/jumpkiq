@@ -50,19 +50,38 @@ angular
 
         .state('profile.main', {
           url: '/main',
-          views: {
-            'aside': { templateUrl: 'profile/stylist.html' },
-            'body': { templateUrl: 'profile/main.html' }
-          }
+          templateUrl: 'profile/main.html'
         })
 
         .state('profile.kiqs', {
           url: '/kiqs',
-          views: {
-            'aside': { templateUrl: 'profile/stylist.html' },
-            'body': { templateUrl: 'profile/kiqs.html' }
-          }
+          templateUrl: 'profile/kiqs.html'
         })
+
+        .state('profile.edit', {
+          url: '/edit',
+          templateUrl: 'profile/edit.html'
+        })
+
+          .state('profile.edit.profile', {
+            url: '',
+            templateUrl: 'profile/edit_profile.html'
+          })
+
+          .state('profile.edit.billing', {
+            url: '',
+            templateUrl: 'profile/edit_billing.html'
+          })
+
+          .state('profile.edit.shipping', {
+            url: '',
+            templateUrl: 'profile/edit_shipping.html'
+          })
+
+          .state('profile.edit.size', {
+            url: '',
+            templateUrl: 'profile/edit_size.html'
+          })
 
 
     $urlRouterProvider.otherwise('/')
