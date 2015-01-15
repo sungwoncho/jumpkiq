@@ -12,7 +12,14 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    Add shipping address
+    <p ng-class='{scratched: address.exists}'>Add shipping address</p>
+
+    <div ng-if='!address.exists'>
+      <a ui-sref='profile.edit.shipping' class='btn btn-info'>
+        Add Shipping address
+      </a>
+    </div>
+
   </div>
 </div>
 
