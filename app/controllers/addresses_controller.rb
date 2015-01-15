@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
 
-    if @address.save && @user.address = @address
+    if @address.save && @address.update(user_id: @user.id)
       render :show
     else
       render json: @address.errors, status: :unprocessable_entity
