@@ -20,4 +20,5 @@
 //= require angular-devise
 //= require angular-flash
 //= require angular-resource
+//= require angular-payments
 //= require_tree .

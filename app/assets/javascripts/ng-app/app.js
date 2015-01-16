@@ -6,7 +6,8 @@ angular
     'templates',
     'Devise',
     'angular-flash.service',
-    'angular-flash.flash-alert-directive'
+    'angular-flash.flash-alert-directive',
+    'angularPayments'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'flashProvider', function($stateProvider, $urlRouterProvider, $locationProvider, flashProvider) {
 
@@ -87,4 +88,7 @@ angular
     $urlRouterProvider.otherwise('/')
 
     $locationProvider.html5Mode(true);
+
+    // Read from meta tag and set the stripe public key
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
   }]);

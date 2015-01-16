@@ -12,7 +12,8 @@
       "angular-animate": "latest",
       "angular-flash": "latest",
       "angular-devise": "latest",
-      "angular-resource": "latest"
+      "angular-resource": "latest",
+      "angular-payments": "latest"
     }
   }
 }

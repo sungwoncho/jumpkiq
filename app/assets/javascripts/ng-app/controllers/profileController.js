@@ -35,4 +35,14 @@ angular.module('sidekiq')
         flash.success = "Successfully created your address."
       })
     }
+
+    $scope.handleStripe = function (status, response) {
+      if (response.error) {
+        flash.error = response.error.message;
+      } else {
+        token = response.id
+        console.log(token);
+      }
+    }
+
   }])

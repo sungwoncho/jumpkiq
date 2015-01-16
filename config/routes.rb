@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   scope 'api', defaults: { format: :json } do
     get 'users' => 'users#show'
     put 'users' => 'users#update'
-    
+
     get 'addresses' => 'addresses#show'
     post 'addresses' => 'addresses#create'
     put 'addresses' => 'addresses#update'
