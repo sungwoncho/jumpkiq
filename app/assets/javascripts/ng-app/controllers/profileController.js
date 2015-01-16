@@ -1,5 +1,5 @@
 angular.module('sidekiq')
-  .controller('profileController', ['$scope', 'Users', 'Addresses', 'flash', function ($scope, Users, Addresses, flash) {
+  .controller('profileController', ['$scope', 'Users', 'Addresses', 'Customers', 'flash', function ($scope, Users, Addresses, Customers, flash) {
 
     // Get information on the current user
     Users.get({}, function (user) {
@@ -8,6 +8,10 @@ angular.module('sidekiq')
 
     Addresses.get({}, function(address) {
       $scope.address = address;
+    })
+
+    Customers.get({}, function (customer) {
+      $scope.customer = customer;
     })
 
     $scope.updateUser = function() {
