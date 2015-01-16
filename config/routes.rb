@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get 'addresses' => 'addresses#show'
     post 'addresses' => 'addresses#create'
     put 'addresses' => 'addresses#update'
+
+    resources :customers, only: [:create, :update, :destroy]
   end
 
   # angular routes

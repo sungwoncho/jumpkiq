@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   validates_presence_of :weight
   validates_presence_of :casual_shirt_size
 
+  def update_stripe_customer_id(customer_id)
+    update(stripe_customer_id: customer_id)
+  end
+
   protected
     def assign_stylist
       Assignment.assign_stylist(self)

@@ -17,13 +17,22 @@ RSpec.describe User, :type => :model do
     it { should validate_presence_of(:casual_shirt_size) }
   end
 
+  let(:user) { create(:user) }
   let!(:stylist) { create(:stylist) }
 
   describe 'callbacks' do
     context 'after creation' do
       it 'assigns a stylist' do
-        user = create(:user)
         expect(user.stylist).not_to eq nil
+      end
+    end
+  end
+
+  describe 'instance_methods' do
+    describe '#update_stripe_customer_id' do
+      it 'updates the stripe_customer_id' do
+        user.update_stripe_customer_id('1234Stripe')
+        expect(user.stripe_customer_id).to eq '1234Stripe'
       end
     end
   end

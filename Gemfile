@@ -27,6 +27,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'stripe-ruby-mock', '~> 2.0.1'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
