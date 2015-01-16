@@ -10,8 +10,8 @@ angular.module('sidekiq')
       $scope.address = address;
     })
 
-    Customers.get({}, function (customer) {
-      $scope.customer = customer;
+    Customers.get().then(function (response) {
+      $scope.customer = response.data;
     })
 
     $scope.updateUser = function() {
@@ -44,8 +44,19 @@ angular.module('sidekiq')
       if (response.error) {
         flash.error = response.error.message;
       } else {
-        token = response.id
-        console.log(token);
+        token = response.id;
+
+        if ($scope.customer.exists) {
+          // If already exists, make PUT call
+          Customers.put(token).success(function (response) {
+            // Bind the new customer to scoped variable
+            $scope.customer = response.customer;
+          })
+        } else {
+          Customers.post(token).success(function (response) {
+            $scope.customer = response.customer;
+          })
+        }
       }
     }
 

@@ -13,8 +13,8 @@ class CustomersController < ApplicationController
   end
 
   def create
-    customer = Stripe::Customer.create(card: @token)
-    current_user.update_stripe_customer_id(customer.id)
+    @customer = Stripe::Customer.create(card: @token)
+    current_user.update_stripe_customer_id(@customer.id)
 
     render :show
   end
