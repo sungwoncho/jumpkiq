@@ -58,6 +58,12 @@ angular.module('sidekiq')
           })
         }
       }
-    }
+    };
+
+    $scope.deleteCard = function () {
+      Customers.delete().success(function(response) {
+        $scope.customer = response;
+      });
+    };
 
   }])

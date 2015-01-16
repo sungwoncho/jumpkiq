@@ -16,5 +16,9 @@ angular.module('sidekiq')
       return $http.put('api/customers?stripeToken=' + token)
     }
 
+    api.delete = function () {
+      return $http.delete('api/customers')
+    }
+
     return api;
   }]);
