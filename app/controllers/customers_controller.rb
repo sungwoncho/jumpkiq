@@ -1,10 +1,13 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_token, except: :destroy
+  before_action :set_token, except: [:destroy, :show]
   before_action :retrieve_customer, except: :create
 
   rescue_from Stripe::InvalidRequestError do |e|
     render json: e.message, status: 400
+  end
+
+  def show
   end
 
   def create

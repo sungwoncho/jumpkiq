@@ -17,6 +17,47 @@ RSpec.describe CustomersController, :type => :controller do
     sign_in user
   end
 
+  describe 'GET show' do
+    context 'when not logged in' do
+      before :each do
+        sign_out user
+        get :show, format: :json
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'when logged in' do
+
+
+      context 'if customer exists' do
+        before :each do
+          @customer = Stripe::Customer.create({card: stripe_helper.generate_card_token})
+          user.update(stripe_customer_id: @customer.id)
+
+          get :show, format: :json
+        end
+
+        it 'assigns the customer to @customer' do
+          expect(assigns(:customer).id).to eq @customer.id
+        end
+      end
+
+      context 'if customer does not exist' do
+        before :each do
+          get :show, format: :json
+        end
+
+        it 'assigns nil to @customer' do
+          expect(assigns(:customer)).to be nil
+        end
+      end
+
+    end
+  end
+
   describe 'POST create' do
     context 'when not logged in' do
       before :each do
