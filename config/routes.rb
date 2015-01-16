@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     post 'addresses' => 'addresses#create'
     put 'addresses' => 'addresses#update'
 
-    resources :customers, only: [:create, :update, :destroy]
+    post 'customers' => 'customers#create'
+    put 'customers' => 'customers#update'
+    delete 'customers' => 'customers#destroy'
   end
 
   # angular routes

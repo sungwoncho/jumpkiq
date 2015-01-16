@@ -62,4 +62,81 @@ RSpec.describe CustomersController, :type => :controller do
 
     end
   end
+
+  describe 'PUT update' do
+    context 'when not logged in' do
+      before :each do
+        sign_out user
+        put :update, format: :json, stripeToken: stripe_helper.generate_card_token
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'when logged in' do
+      before :each do
+        @customer = Stripe::Customer.create({card: stripe_helper.generate_card_token})
+        user.update(stripe_customer_id: @customer.id)
+
+        put :update, format: :json, stripeToken: stripe_helper.generate_card_token
+      end
+
+      it 'updates the customer card' do
+        skip
+      end
+    end
+  end
+
+  describe 'DELETE destroy' do
+    context 'when not logged in' do
+      before :each do
+        sign_out user
+        delete :destroy, format: :json
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'when logged in' do
+
+      context 'if customer exists' do
+
+        before :each do
+          @customer = Stripe::Customer.create({card: stripe_helper.generate_card_token})
+          user.update(stripe_customer_id: @customer.id)
+
+          delete :destroy, format: :json
+        end
+
+        it 'returns 204 status' do
+          expect(response.status).to eq 204
+        end
+
+        it 'deletes the customer' do
+          # expect(@customer).to be nil
+          skip
+        end
+
+        it "sets the user's stripe_customer_id to nil" do
+          user.reload
+          expect(user.stripe_customer_id).to eq nil
+        end
+
+      end
+
+      context 'if customer does not exist' do
+        before :each do
+          delete :destroy, format: :json
+        end
+
+        it 'returns 400 status' do
+          expect(response.status).to eq 400
+        end
+      end
+    end
+  end
 end
