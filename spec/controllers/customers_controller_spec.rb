@@ -154,7 +154,7 @@ RSpec.describe CustomersController, :type => :controller do
         end
 
         it 'returns 204 status' do
-          expect(response.status).to eq 204
+          expect(response.status).to eq 200
         end
 
         it 'deletes the customer' do

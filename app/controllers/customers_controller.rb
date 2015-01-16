@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
   def destroy
     if @customer.delete
       current_user.update_stripe_customer_id(nil)
-      head 204
+      render :show, status: 200
     end
   end
 
