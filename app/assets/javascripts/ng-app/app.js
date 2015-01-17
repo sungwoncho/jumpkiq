@@ -54,9 +54,9 @@ angular
           templateUrl: 'profile/main.html'
         })
 
-        .state('profile.styles', {
-          url: '/styles',
-          templateUrl: 'profile/styles.html'
+        .state('profile.kiqs', {
+          url: '/kiqs',
+          templateUrl: 'profile/kiqs.html'
         })
 
         .state('profile.edit', {

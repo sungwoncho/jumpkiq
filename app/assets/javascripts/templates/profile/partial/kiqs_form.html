@@ -1,0 +1,106 @@
+<div flash-alert active-class="in alert" class="fade text-center">
+  <span class="alert-message">{{ flash.message }}</span>
+</div>
+
+<form id='style-form' ng-submit='updateUser()'>
+  <div>
+
+    <h4>Your Style</h4>
+
+    <input type="checkbox" value='SmartStyle' id='SmartStyle' ng-checked='user.smart_style' ng-model='user.smart_style'>
+    <label for="SmartStyle">Smart Style</label>
+
+    <input type="checkbox" value='CasualStyle' id='CasualStyle' ng-checked='user.casual_style' ng-model='user.casual_style'>
+    <label for="CasualStyle">Casual Style</label>
+
+    <input type="checkbox" value='HipsterStyle' id='HipsterStyle' ng-checked='user.hipster_style' ng-model='user.hipster_style'>
+    <label for="HipsterStyle">Hipster Style</label>
+
+    <input type="checkbox" value='ClassicStyle' id='ClassicStyle' ng-checked='user.classic_style' ng-model='user.classic_style'>
+    <label for="ClassicStyle">Classic Style</label>
+  </div>
+
+  <div>
+
+    <h4>Your Needs</h4>
+
+    <input type="checkbox" value='LongSleeve' id='LongSleeve' ng-checked='user.long_sleeve' ng-model='user.long_sleeve'>
+    <label for="LongSleeve">Longsleeve</label>
+
+    <input type="checkbox" value='ShortSleeve' id='ShortSleeve' ng-checked='user.short_sleeve' ng-model='user.short_sleeve'>
+    <label for="ShortSleeve">Shortsleeve</label>
+
+    <input type="checkbox" value='PoloShirt' id='PoloShirt' ng-checked='user.polo_shirt' ng-model='user.polo_shirt'>
+    <label for="PoloShirt">Polo shirt</label>
+
+    <input type="checkbox" value='Pants' id='Pants' ng-checked='user.pants' ng-model='user.pants'>
+    <label for="Pants">Pants</label>
+
+    <input type="checkbox" value='Shorts' id='Shorts' ng-checked='user.shorts' ng-model='user.shorts'>
+    <label for="Shorts">Shorts</label>
+  </div>
+
+  <div>
+
+    <h4>Budget</h4>
+
+    <label ng-show='user.long_sleeve'>
+      Long Sleeve
+      <select class="form-control" ng-model="user.long_sleeve_max_budget">
+        <option value='-1'>I'm not sure yet.</option>
+        <option value='100'>$50 - $100</option>
+        <option value='150'>$100 - $150</option>
+        <option value='200'>$150 - $200</option>
+        <option value='999'>I'll pay for quality.</option>
+      </select>
+    </label>
+
+    <label ng-show='user.short_sleeve'>
+      Short Sleeve
+      <select class="form-control" ng-model="user.short_sleeve_max_budget">
+        <option value='-1'>I'm not sure yet.</option>
+        <option value='100'>$50 - $100</option>
+        <option value='150'>$100 - $150</option>
+        <option value='200'>$150 - $200</option>
+        <option value='999'>I'll pay for quality.</option>
+      </select>
+    </label>
+
+    <label ng-show='user.polo_shirt'>
+      Polo Shirt
+      <select class="form-control" ng-model="user.polo_shirt_max_budget">
+        <option value='-1'>I'm not sure yet.</option>
+        <option value='100'>$50 - $100</option>
+        <option value='150'>$100 - $150</option>
+        <option value='200'>$150 - $200</option>
+        <option value='999'>I'll pay for quality.</option>
+      </select>
+    </label>
+
+    <label ng-show='user.pants'>
+      Pants
+      <select class="form-control" ng-model="user.patns_max_budget">
+        <option value='-1'>I'm not sure yet.</option>
+        <option value='100'>$50 - $100</option>
+        <option value='150'>$100 - $150</option>
+        <option value='200'>$150 - $200</option>
+        <option value='999'>I'll pay for quality.</option>
+      </select>
+    </label>
+
+    <label ng-show='user.shorts'>
+      Shorts
+      <select class="form-control" ng-model="user.shorts_max_budget">
+        <option value='-1'>I'm not sure yet.</option>
+        <option value='100'>$50 - $100</option>
+        <option value='150'>$100 - $150</option>
+        <option value='200'>$150 - $200</option>
+        <option value='999'>I'll pay for quality.</option>
+      </select>
+    </label>
+
+  </div>
+
+  <button type='submit' class='btn btn-success'>Complete</button>
+  <a ui-sref='profile.main' class='btn btn-info'>Back</a>
+</form>

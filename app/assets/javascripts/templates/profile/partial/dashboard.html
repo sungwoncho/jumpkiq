@@ -1,18 +1,16 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    Your styles and needs
+    <h3>Your styles and needs</h3>
 
     <div>
-      <a ui-sref='profile.styles' class='btn btn-info'>
-        View <span class="glyphicon glyphicon-circle-arrow-right"></span>
-      </a>
+      <a ui-sref='profile.kiqs' class='btn btn-info'>View</a>
     </div>
   </div>
 </div>
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <p ng-class='{scratched: address.exists}'>Add shipping address</p>
+    <h3 ng-class='{scratched: address.exists}'>Add shipping address</h3>
 
     <div ng-if='!address.exists'>
       <a ui-sref='profile.edit.shipping' class='btn btn-info'>
@@ -25,7 +23,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <p ng-class='{scratched: customer.exists}'>Add credit card</p>
+    <h3 ng-class='{scratched: customer.exists}'>Add credit card</h3>
 
     <div ng-if='!customer.exists'>
       <a ui-sref='profile.edit.billing' class='btn btn-info'>
