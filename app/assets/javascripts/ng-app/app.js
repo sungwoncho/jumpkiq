@@ -35,8 +35,8 @@ angular
           templateUrl: 'signup_form/needs.html'
         })
         .state('signup.kiqs', {
-          url: '/kiqs',
-          templateUrl: 'signup_form/kiqs.html'
+          url: '/styles',
+          templateUrl: 'signup_form/styles.html'
         })
         .state('signup.account', {
           url: '/account',
@@ -54,9 +54,9 @@ angular
           templateUrl: 'profile/main.html'
         })
 
-        .state('profile.kiqs', {
-          url: '/kiqs',
-          templateUrl: 'profile/kiqs.html'
+        .state('profile.styles', {
+          url: '/styles',
+          templateUrl: 'profile/styles.html'
         })
 
         .state('profile.edit', {

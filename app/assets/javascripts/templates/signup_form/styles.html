@@ -1,0 +1,28 @@
+<div class="form-group row">
+  <input type="checkbox" value='SmartStyle' id='SmartStyle' ng-model='formData.smart_style'>
+  <label for="SmartStyle">Smart style</label>
+
+  <input type="checkbox" value='CasualStyle' id='CasualStyle' ng-model='formData.casual_style'>
+  <label for="CasualStyle">Casual style</label>
+
+  <input type="checkbox" value='HipsterStyle' id='HipsterStyle' ng-model='formData.hipster_style'>
+  <label for="HipsterStyle">Hipster style</label>
+
+  <input type="checkbox" value='ClassicStyle' id='ClassicStyle' ng-model='formData.classic_style'>
+  <label for="ClassicStyle">Classic style</label>
+</div>
+
+
+<div class="form-group row">
+  <div class="col-xs-3">
+    <a ui-sref='signup.needs' class='btn btn-block btn-default'>
+      <span class="glyphicon glyphicon-circle-arrow-left"></span> Prev Section
+    </a>
+  </div>
+
+  <div class="col-xs-3 col-xs-offset-6">
+    <a ui-sref='signup.account' class='btn btn-block btn-info'>
+      Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+  </div>
+</div>

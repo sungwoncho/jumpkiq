@@ -1,0 +1,22 @@
+<div flash-alert active-class="in alert" class="fade text-center">
+  <span class="alert-message">{{ flash.message }}</span>
+</div>
+
+<form id='kiq-form' ng-submit='updateUser()'>
+  <input type="checkbox" value='SmartStyle' id='SmartStyle' ng-checked='user.smart_style' ng-model='user.smart_style'>
+  <label for="SmartStyle">Smart Style</label>
+
+  <input type="checkbox" value='CasualStyle' id='CasualStyle' ng-checked='user.casual_style' ng-model='user.casual_style'>
+  <label for="CasualStyle">Casual Style</label>
+
+  <input type="checkbox" value='HipsterStyle' id='HipsterStyle' ng-checked='user.hipster_style' ng-model='user.hipster_style'>
+  <label for="HipsterStyle">Hipster Style</label>
+
+  <input type="checkbox" value='ClassicStyle' id='ClassicStyle' ng-checked='user.classic_style' ng-model='user.classic_style'>
+  <label for="ClassicStyle">Classic Style</label>
+
+  <button type='submit' class='btn btn-success'>Complete</button>
+  <a ui-sref='profile.main' class='btn btn-info'>
+    <span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+  </a>
+</form>

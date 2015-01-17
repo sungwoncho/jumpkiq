@@ -76,3 +76,7 @@ body {
 .nav > li > a:hover, .nav > li > a:focus {
   background-color: inherit;
 }
+
+.navbar-inverse .dropdown-menu > li > a:hover, .navbar-inverse .dropdown-menu > .active > a, .navbar-inverse .dropdown-menu > .active > a:hover {
+  background-color: #2F2F2F;
+}

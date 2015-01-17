@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116013843) do
+ActiveRecord::Schema.define(version: 20150117025004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,10 +75,10 @@ ActiveRecord::Schema.define(version: 20150116013843) do
     t.boolean  "polo_shirt",             default: false
     t.boolean  "pants",                  default: false
     t.boolean  "shorts",                 default: false
-    t.boolean  "smart_kiq",              default: false
-    t.boolean  "casual_kiq",             default: false
-    t.boolean  "hipster_kiq",            default: false
-    t.boolean  "classic_kiq",            default: false
+    t.boolean  "smart_style",            default: false
+    t.boolean  "casual_style",           default: false
+    t.boolean  "hipster_style",          default: false
+    t.boolean  "classic_style",          default: false
     t.string   "firstname"
     t.string   "lastname"
     t.string   "stripe_customer_id"

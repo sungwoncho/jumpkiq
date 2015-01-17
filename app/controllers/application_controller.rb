@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
           :firstname, :lastname,
           :height, :weight, :casual_shirt_size,
           :long_sleeve, :short_sleeve, :polo_shirt, :pants, :shorts,
-          :smart_kiq, :casual_kiq, :hipster_kiq, :classic_kiq)
+          :smart_style, :casual_style, :hipster_style, :classic_style)
       end
     end
 
