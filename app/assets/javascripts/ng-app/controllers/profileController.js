@@ -50,11 +50,11 @@ angular.module('sidekiq')
           // If already exists, make PUT call
           Customers.put(token).success(function (response) {
             // Bind the new customer to scoped variable
-            $scope.customer = response.customer;
+            $scope.customer = response;
           })
         } else {
           Customers.post(token).success(function (response) {
-            $scope.customer = response.customer;
+            $scope.customer = response;
           })
         }
       }

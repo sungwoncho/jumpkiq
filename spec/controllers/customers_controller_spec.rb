@@ -158,8 +158,8 @@ RSpec.describe CustomersController, :type => :controller do
         end
 
         it 'deletes the customer' do
-          # expect(@customer).to be nil
-          skip
+          customer = Stripe::Customer.retrieve(@customer.id)
+          expect(customer.deleted).to eq true
         end
 
         it "sets the user's stripe_customer_id to nil" do
