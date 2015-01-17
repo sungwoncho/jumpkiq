@@ -72,3 +72,7 @@ body {
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
   color: #000;
 }
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: inherit;
+}

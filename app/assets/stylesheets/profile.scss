@@ -10,3 +10,9 @@
   background-color: #fff;
   padding: 30px;
 }
+
+.nav {
+  li.active {
+    background-color: $gray;
+  }
+}
