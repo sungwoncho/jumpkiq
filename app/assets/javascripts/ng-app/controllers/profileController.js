@@ -19,7 +19,7 @@ angular.module('sidekiq')
         flash.success = "Successfully updated your Kiqs."
       })
     }
-
+    
     $scope.processAddressForm = function () {
       if ($scope.address.exists) {
         $scope.updateAddress();
