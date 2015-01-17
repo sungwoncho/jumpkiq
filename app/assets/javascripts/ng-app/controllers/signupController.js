@@ -19,7 +19,7 @@ angular.module('sidekiq')
     }
 
     $scope.checkInput1 = function($event) {
-      if ('height' in $scope.formData && 'weight' in $scope.formData && 'shirt_size' in $scope.formData) {
+      if ('height' in $scope.formData && 'weight' in $scope.formData && 'casual_shirt_size' in $scope.formData) {
 
       } else {
         $event.preventDefault();
