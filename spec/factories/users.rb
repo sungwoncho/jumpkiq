@@ -9,10 +9,10 @@ FactoryGirl.define do
     firstname { Faker::Name.first_name }
     lastname { Faker::Name.last_name }
 
-    smart_kiq true
-    casual_kiq true
-    hipster_kiq false
-    classic_kiq false
+    smart_style true
+    casual_style true
+    hipster_style false
+    classic_style false
 
     height 175
     weight 75

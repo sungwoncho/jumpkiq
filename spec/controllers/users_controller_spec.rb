@@ -55,7 +55,7 @@ RSpec.describe UsersController, :type => :controller do
       context 'with valid params' do
 
         before :each do
-          put :update, user: attributes_for(:user, classic_kiq: true), format: :json
+          put :update, user: attributes_for(:user, classic_style: true), format: :json
           user.reload
         end
 
@@ -64,7 +64,7 @@ RSpec.describe UsersController, :type => :controller do
         end
 
         it 'updates the user' do
-          expect(user.classic_kiq).to eq true
+          expect(user.classic_style).to eq true
         end
 
         it 'returns 200 status' do
