@@ -2,15 +2,48 @@
   <span class="alert-message">{{ flash.message }}</span>
 </div>
 
-<form stripe-form='handleStripe'>
-  <input ng-model='number' placeholder='Card Number' payments-format='card' name='card' />
-  <input ng-model='expiry' placeholder='Expiration' payments-format='expiry' name='expiry' />
-  <input ng-model='cvc' placeholder='CVC' payments-format='cvc' name='cvc' />
-  <button type='submit'>Complete</button>
-</form>
+<div class="row">
+  <div class="col-md-6">
+    <form stripe-form='handleStripe'>
 
-  <button ng-click='deleteCard()'>Remove</button>
+      <h4>Add/Update credit card</h4>
 
-<pre>
-  {{ customer }}
-</pre>
+      <label class='box'>
+        Card number
+        <input ng-model='number' payments-format='card' class='form-control' />
+      </label>
+
+      <label class='box'>
+        Expiration date
+        <input ng-model='expiry' placeholder='MM/YY' payments-format='expiry' class='form-control' />
+      </label>
+
+      <label class='box'>
+        CVC code
+        <input ng-model='cvc' payments-format='cvc' class='form-control' />
+      </label>
+
+
+      <div class="form-actions">
+        <button type='submit' class='btn btn-success'>Complete</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Currently saved credit card</h4>
+
+    <div ng-if='customer.exists'>
+      {{ customer.card.brand }} {{ customer.card.last4 }} {{ customer.card.exp_month }}/{{ customer.card.exp_year }}
+
+      <div class="form-actions">
+        <button ng-click='deleteCard()' class='btn btn-default'>Remove</button>
+      </div>
+    </div>
+
+    <div ng-if='!customer.exists'>
+      None
+    </div>
+
+  </div>
+</div>

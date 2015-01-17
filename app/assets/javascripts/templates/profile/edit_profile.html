@@ -3,12 +3,20 @@
 </div>
 
 <form id='profile-form' ng-submit='updateUser()'>
-  <label for="firstname">First name</label>
-  <input type="text" value='firstname' id='firstname' class='form-control' ng-model='user.firstname'>
+  <div class="row">
+    <div class="col-md-5">
+      <h4>Your contact info</h4>
 
-  <label for="lastname">Last name</label>
-  <input type="text" value='lastname' id='lastname' class='form-control' ng-model='user.lastname'>
+      <label for="firstname">First name</label>
+      <input type="text" value='firstname' id='firstname' class='form-control' ng-model='user.firstname'>
+
+      <label for="lastname">Last name</label>
+      <input type="text" value='lastname' id='lastname' class='form-control' ng-model='user.lastname'>
 
 
-  <button type='submit' class='btn btn-success'>Complete</button>
+      <div class="form-actions">
+        <button type='submit' class='btn btn-success'>Complete</button>
+      </div>
+    </div>
+  </div>
 </form>

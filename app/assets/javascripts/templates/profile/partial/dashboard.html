@@ -25,11 +25,13 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    Add credit card
-    <div>
+    <p ng-class='{scratched: customer.exists}'>Add credit card</p>
+
+    <div ng-if='!customer.exists'>
       <a ui-sref='profile.edit.billing' class='btn btn-info'>
         Add credit card
       </a>
     </div>
+    
   </div>
 </div>

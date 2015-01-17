@@ -8,16 +8,67 @@ a {
   cursor: pointer;
 }
 
-.navbar {
-  a.dropdown-toggle {
-    text-transform: uppercase;
-  }
-}
-
 .form-actions {
   margin-top: 10px;
 }
 
 body {
   background-color: $gray-light;
+}
+
+.box {
+  width: 100%;
+}
+
+
+/* The below overwrites the default Bootstrap styles */
+
+.navbar {
+  a.dropdown-toggle {
+    text-transform: uppercase;
+  }
+}
+
+.navbar-inverse {
+  background-color: #fff;
+
+  .navbar-brand {
+    color: #000;
+  }
+
+  .navbar-brand:hover {
+    color: inherit;
+  }
+
+  .navbar-nav > li > a {
+    color: #000;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  background-color: $gray-light;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: $gray-light;
+}
+
+.navbar-inverse .dropdown-menu > li > a:hover, .navbar-inverse .dropdown-menu > .active > a, .navbar-inverse .dropdown-menu > .active > a:hover {
+  background-color: $gray-light;
+}
+
+.navbar-inverse .dropdown-menu {
+  background-color: #000;
+}
+
+.navbar-inverse .dropdown-menu > li > a, .navbar-inverse .dropdown-menu > li > a:focus {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  color: #000;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #000;
 }
