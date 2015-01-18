@@ -1,0 +1,90 @@
+<div class="main">
+
+  <section id="home" class="page">
+    <div class="container">
+      <div class="content cover text-center">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="animated hiding" data-animation="fadeInDown" data-delay="300">We Are Sidekiq</h1>
+            <a class="btn btn-success nav-external animated hiding" data-animation="fadeIn" data-delay="900" href="#services">Find more</a>
+            <h3 class="animated hiding" data-animation="fadeIn" data-delay="600">We make clothing easy for men.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="page">
+    <div class="container">
+      <div class="content text-center">
+        <div class="heading">
+          <h2>How it works</h2>
+          <div class="border"></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 service animated hiding" data-animation="fadeInUp" data-delay="300">
+            <i class="fa fa-user fa-5x"></i>
+            <h3>Set up profile</h3>
+            <p>Complete your profile by filling in your needs, budget, style, and measurements. We will match you with a personal stylist.</p>
+          </div>
+          <div class="col-lg-4 service animated hiding" data-animation="fadeInUp" data-delay="600">
+            <i class="fa fa-truck fa-5x"></i>
+            <h3>Request a Kiq</h3>
+            <p>Request a sidekiq package! Your personal stylist will make sure to fulfill your needs and make you look great.</p>
+          </div>
+          <div class="col-lg-4 service animated hiding" data-animation="fadeInUp" data-delay="900">
+            <i class="fa fa-suitcase fa-5x"></i>
+            <h3>Choose</h3>
+            <p>Keep what you want. If there are items you don't like, simply return the package using the post label enclosed.</p>
+          </div>
+
+          <div class="col-lg-12">
+            <p class='explanation'>
+              Only pay for what you keep. The stylist is free. No subscription fee.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="statement" class="page">
+    <div class="container">
+      <div class="content text-center">
+        <div class="heading">
+          <h2>Just focus on other things you like.<br>
+          We will make you look good.</h2>
+
+          <br>
+          <% unless user_signed_in? %>
+            <a href="/signup/measurements" class='btn btn-success btn-lg'>Get started for free</a>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 animated hiding" data-animation="fadeInUp">
+          <ul class="social list-inline ">
+            <li>
+              <a class="facebook" target='_blank' href="https://www.facebook.com/pages/Sidekiq/1567555646824870" title="Facebook">
+                <i class="fa fa-facebook fa-2x"></i>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright">
+            &copy; 2015 Sidekiq
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>

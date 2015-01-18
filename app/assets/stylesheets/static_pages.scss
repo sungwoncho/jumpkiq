@@ -1,3 +1,102 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+* Author: Carlos Alvarez
+* URL: http://Alvarez.is
+*
+* Project Name: SHIELD - Free Bootstrap 3 Theme
+* Version: 1.0
+* Date: 02-11-2013
+* URL: http://blacktie.co/
+*/
+
+.main {
+  margin-top: -21px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+#home {
+  padding: 0;
+  color: #fff;
+  background-image: image-url('cover/home.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 680px;
+}
+#home h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 60px;
+}
+#home a { margin: 0 5px }
+#home h3 {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+#services {
+  background-color: #f5f5f5;
+  border-bottom: solid 1px #e7e7e7;
+}
+#services .service i { margin-top: 60px }
+#services .service:hover i { color: #71be3c }
+
+.page .border {
+  width: 80px;
+  height: 2px;
+  margin: 0 auto;
+  background-color: #71be3c;
+}
+
+.page .content.cover { padding: 240px 0 }
+.page .content {
+  padding: 50px 0;
+}
+
+@media (max-width: 767px) {
+  .page .content.cover { padding: 160px 0 }
+  #testimonials .quote { padding: 0 50px }
+  #testimonials .carousel-control.right { right: 10px }
+}
+@media (max-width: 480px) {
+  .page .content.cover { padding: 80px 0 }
+  #portfolio .items li { width: 100% }
+  #testimonials .quote { padding: 0 30px }
+}
+
+#statement {
+  background-color: #fff;
+}
+
+#footer {
+  padding: 40px 0;
+  color: #ccc;
+  text-align: center;
+  background-color: #2a3940;
+}
+#footer a,
+#footer a:hover,
+#footer a:focus { color: #fff }
+#footer .social { margin-bottom: 20px }
+#footer .social li .facebook:hover,
+#footer .social li .facebook:focus { color: #3b5998 }
+#footer .social li .twitter:hover,
+#footer .social li .twitter:focus { color: #00aced }
+#footer .social li .google-plus:hover,
+#footer .social li .google-plus:focus { color: #d34836 }
+#footer .social li .dribbble:hover,
+#footer .social li .dribbble:focus { color: #ea4c89 }
+#footer .copyright { margin-bottom: 0 }
+
+.hiding { opacity: 0 }
+.showing { opacity: 1 }
+
+.explanation {
+  text-transform: uppercase;
+  color: $gray-font;
+  margin-top: 40px;
+}
