@@ -34,7 +34,7 @@ angular
           url: '/needs',
           templateUrl: 'signup_form/needs.html'
         })
-        .state('signup.kiqs', {
+        .state('signup.styles', {
           url: '/styles',
           templateUrl: 'signup_form/styles.html'
         })
