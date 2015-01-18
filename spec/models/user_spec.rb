@@ -69,31 +69,41 @@ RSpec.describe User, :type => :model do
       end
     end
 
-    describe '#has_styles?' do
+    describe '#has_style?' do
       context 'when user has specified at least one style preferences' do
         before :each do
           user.update(smart_style: true)
         end
 
-        specify { expect(user.has_styles?).to be true }
+        specify { expect(user.has_style?).to be true }
       end
 
       context 'when user has not specified any style preferences' do
-        specify { expect(user.has_styles?).to be false }
+        specify { expect(user.has_style?).to be false }
       end
     end
 
-    describe '#has_needs?' do
+    describe '#has_need?' do
       context 'when user has specified needs' do
         before :each do
           user.update(polo_shirt: true)
         end
 
-        specify { expect(user.has_needs?).to be true }
+        specify { expect(user.has_need?).to be true }
       end
 
       context 'when user has not specified needs' do
-        specify { expect(user.has_needs?).to be false }
+        specify { expect(user.has_need?).to be false }
+      end
+    end
+
+    describe '#ready_to_order?' do
+      context "when user has a kiq with 'requested' status" do
+        before :each do
+          create(:kiq, user: user, status: 'requested')
+        end
+
+        specify { expect(user).not_to be_ready_to_order }
       end
     end
   end

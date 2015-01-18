@@ -31,16 +31,16 @@ class User < ActiveRecord::Base
     stripe_customer_id.present?
   end
 
-  def has_styles?
+  def has_style?
     smart_style || casual_style || hipster_style || classic_style
   end
 
-  def has_needs?
+  def has_need?
     long_sleeve || short_sleeve || polo_shirt || pants || shorts
   end
 
   def ready_to_order?
-    has_shipping_address? && has_credit_card? && has_styles? && has_needs?
+    has_shipping_address? && has_credit_card? && has_style? && has_need? && !requested_kiqs
   end
 
   protected
