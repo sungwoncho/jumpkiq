@@ -1,1 +1,1 @@
-json.(@kiq, :id, :status)
+json.partial! 'kiq', kiq: @kiq

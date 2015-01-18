@@ -89,15 +89,25 @@ angular.module('sidekiq')
     $scope.requestKiq = function () {
       if ($scope.user.order.ready) {
         $scope.kiq = new Kiqs();
-        $scope.kiq.$save(function () {
+        $scope.kiq.$save(function (response) {
           $scope.user.order.has_requested_kiq = true;
           $scope.user.order.ready = false;
 
-          flash.success = 'success.'
+          $scope.kiqs = Kiqs.query();
+          flash.success = 'Successfully requested a kiq.'
         })
       } else {
         flash.error = $scope.getKiqErrorMessage();
       }
+    }
+
+    $scope.cancelKiq = function (kiq) {
+      kiq.$delete(function () {
+        $scope.user.order.has_requested_kiq = false;
+        $scope.user.order.ready = true;
+
+        flash.success = 'Successfully cancelled the kiq.'
+      })
     }
 
 

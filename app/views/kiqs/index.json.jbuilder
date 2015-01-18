@@ -1,1 +1,1 @@
-json.kiqs @kiqs
+json.partial! 'kiq', collection: @kiqs, as: :kiq

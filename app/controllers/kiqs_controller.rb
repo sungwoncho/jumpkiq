@@ -5,7 +5,7 @@ class KiqsController < ApplicationController
   before_action :get_status, only: :update
 
   def index
-    @kiqs = current_user.kiqs
+    @kiqs = current_user.kiqs.order(created_at: :desc)
   end
 
   def show

@@ -84,6 +84,11 @@ angular
             templateUrl: 'profile/edit_size.html'
           })
 
+        .state('profile.orders', {
+          url: '/orders',
+          templateUrl: 'profile/orders.html'
+        })
+
 
     $urlRouterProvider.otherwise('/')
 
