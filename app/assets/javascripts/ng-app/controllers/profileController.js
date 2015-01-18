@@ -36,13 +36,15 @@ angular.module('sidekiq')
 
     $scope.updateAddress = function() {
       $scope.address.$update(function() {
-        flash.success = "Successfully updated your address."
+        flash.success = "Successfully updated your address.";
       })
     }
 
     $scope.createAddress = function() {
       $scope.address.$save(function() {
-        flash.success = "Successfully created your address."
+        flash.success = "Successfully created your address.";
+        $scope.address.exists = true;
+        $scope.user.order.has_shipping_address = true;
       })
     }
 
@@ -57,6 +59,7 @@ angular.module('sidekiq')
           Customers.put(token).success(function (response) {
             // Bind the new customer to scoped variable
             $scope.customer = response;
+            $scope.user.order.has_credit_card = true;
           })
         } else {
           Customers.post(token).success(function (response) {
