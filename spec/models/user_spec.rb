@@ -39,5 +39,61 @@ RSpec.describe User, :type => :model do
         expect(user.stripe_customer_id).to eq '1234Stripe'
       end
     end
+
+    describe '#has_shipping_address?' do
+      context 'when user has a shipping address' do
+        before :each do
+          create(:address, user: user)
+        end
+
+        specify { expect(user.has_shipping_address?).to be true }
+      end
+
+      context 'when user does not have a shipping address' do
+        specify { expect(user.has_shipping_address?).to be false }
+      end
+    end
+
+    describe '#has_credit_card?' do
+      context 'when user has a stripe_customer_id' do
+        before :each do
+          user.stripe_customer_id = 'sample_id'
+        end
+
+        specify { expect(user.has_credit_card?).to be true }
+      end
+
+      context 'when user does not have stripe_customer_id' do
+        specify { expect(user.has_credit_card?).to be false }
+      end
+    end
+
+    describe '#has_styles?' do
+      context 'when user has specified at least one style preferences' do
+        before :each do
+          user.update(smart_style: true)
+        end
+
+        specify { expect(user.has_styles?).to be true }
+      end
+
+      context 'when user has not specified any style preferences' do
+        specify { expect(user.has_styles?).to be false }
+      end
+    end
+
+    describe '#has_needs?' do
+      context 'when user has specified needs' do
+        before :each do
+          user.update(polo_shirt: true)
+        end
+
+        specify { expect(user.has_needs?).to be true }
+      end
+
+      context 'when user has not specified needs' do
+        specify { expect(user.has_needs?).to be false }
+      end
+    end
   end
 end

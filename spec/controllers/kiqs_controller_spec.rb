@@ -14,6 +14,7 @@ RSpec.describe KiqsController, :type => :controller do
 
   let!(:kiq) { create(:kiq, user: user, status: 'completed') }
   let!(:kiq_2) { create(:kiq, user: user, status: 'completed') }
+  let!(:address) { create(:address, user: user) }
 
   context 'for users' do
     before :each do
@@ -83,9 +84,9 @@ RSpec.describe KiqsController, :type => :controller do
       end
 
       context 'when logged in' do
-        context 'when requested kiq exists' do
+        context 'when user has no shipping address' do
           before :each do
-            create(:kiq, user: user, status: 'requested')
+            user.address = nil
           end
 
           it 'does not create a new kiq' do
@@ -95,23 +96,70 @@ RSpec.describe KiqsController, :type => :controller do
           end
         end
 
-        context 'when no requested kiq exists' do
-          it 'creates a new kiq' do
+        context 'when user has no credit card' do
+          before :each do
+            user.stripe_customer_id = nil
+          end
+
+          it 'does not create a new kiq' do
             expect {
               post :create, format: :json
-            }.to change(Kiq, :count).by(1)
-          end
-
-          it 'sets the kiq to belong to the current user' do
-            post :create, format: :json
-            expect(Kiq.last.user).to eq user
-          end
-
-          it "sets the kiqs to belong to current user's stylist" do
-            post :create, format: :json
-            expect(Kiq.last.stylist).to eq stylist
+            }.not_to change(Kiq, :count)
           end
         end
+
+        context 'when user has no styles' do
+          it 'does not create a new kiq' do
+            expect {
+              post :create, format: :json
+            }.not_to change(Kiq, :count)
+          end
+        end
+
+        context 'when user has no needs' do
+          it 'does not create a new kiq' do
+            expect {
+              post :create, format: :json
+            }.not_to change(Kiq, :count)
+          end
+        end
+
+        context 'when user is ready to order' do
+          before :each do
+            user.update(stripe_customer_id: 'sample_id', polo_shirt: true, smart_style: true)
+          end
+
+          context 'when requested kiq exists' do
+            before :each do
+              create(:kiq, user: user, status: 'requested')
+            end
+
+            it 'does not create a new kiq' do
+              expect {
+                post :create, format: :json
+              }.not_to change(Kiq, :count)
+            end
+          end
+
+          context 'when no requested kiq exists' do
+            it 'creates a new kiq' do
+              expect {
+                post :create, format: :json
+              }.to change(Kiq, :count).by(1)
+            end
+
+            it 'sets the kiq to belong to the current user' do
+              post :create, format: :json
+              expect(Kiq.last.user).to eq user
+            end
+
+            it "sets the kiqs to belong to current user's stylist" do
+              post :create, format: :json
+              expect(Kiq.last.stylist).to eq stylist
+            end
+          end
+        end
+
       end
     end
 

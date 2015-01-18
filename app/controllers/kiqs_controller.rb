@@ -12,6 +12,11 @@ class KiqsController < ApplicationController
   end
 
   def create
+    unless current_user.ready_to_order?
+      render nothing: true, status: :method_not_allowed
+      return
+    end
+
     if current_user.requested_kiqs.present?
       render json: 'You have already requested a kiq'
     else
