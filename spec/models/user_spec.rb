@@ -9,6 +9,10 @@ RSpec.describe User, :type => :model do
     it { should have_one(:assignment).dependent(:destroy) }
     it { should have_one(:stylist) }
     it { should have_one(:address).dependent(:destroy) }
+    it { should have_many(:kiqs) }
+    it { should have_many(:requested_kiqs).conditions(status: 'requested') }
+    it { should have_many(:pending_kiqs).conditions(status: 'pending') }
+    it { should have_many(:completed_kiqs).conditions(status: 'completed') }
   end
 
   describe 'validation' do

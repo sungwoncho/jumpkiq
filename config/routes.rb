@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     post 'customers' => 'customers#create'
     put 'customers' => 'customers#update'
     delete 'customers' => 'customers#destroy'
+
+    resources :kiqs, except: [:new, :edit]
   end
 
   # angular routes

@@ -8,5 +8,6 @@ RSpec.describe Stylist, :type => :model do
   describe 'association' do
     it { should have_many(:assignments).dependent(:destroy) }
     it { should have_many(:users) }
+    it { should have_many(:kiqs) }
   end
 end
