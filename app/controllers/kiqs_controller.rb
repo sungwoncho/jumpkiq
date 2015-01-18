@@ -12,17 +12,12 @@ class KiqsController < ApplicationController
   end
 
   def create
-    unless current_user.ready_to_order?
-      render nothing: true, status: :method_not_allowed
-      return
-    end
-
-    if current_user.requested_kiqs.present?
-      render json: 'You have already requested a kiq'
-    else
+    if current_user.ready_to_order?
       @kiq = current_user.kiqs.create
       current_user.stylist.kiqs << @kiq
       render :show
+    else
+      head status: :method_not_allowed
     end
   end
 
@@ -39,7 +34,7 @@ class KiqsController < ApplicationController
       @kiq.update(status: 'cancelled')
       render :show
     else
-      render nothing: true, status: :method_not_allowed
+      head status: :method_not_allowed
     end
   end
 
