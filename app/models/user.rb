@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def ready_to_order?
-    has_shipping_address? && has_credit_card? && has_style? && has_need? && !requested_kiqs
+    has_shipping_address? && has_credit_card? && has_style? && has_need? && requested_kiqs.empty?
   end
 
   protected
