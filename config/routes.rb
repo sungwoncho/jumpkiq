@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'stylists/dashboard' => 'stylists#dashboard'
+
   # angular routes
   get '/signup/*all' => 'application#index'
   get '/profile' => 'application#index'
