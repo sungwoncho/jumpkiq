@@ -1,18 +1,21 @@
-<div class="row">
-  <h3>Edit your profile</h3>
+<div class="container">
+  <div class="row">
+    <h3>Edit your profile</h3>
 
-  <div class="col-md-3">
+    <div class="col-md-3">
 
-    <ul class='nav'>
-      <li ui-sref-active='active'><a ui-sref='profile.edit.profile'>Profile</a></li>
-      <li ui-sref-active='active'><a ui-sref='profile.edit.shipping'>Shipping</a></li>
-      <li ui-sref-active='active'><a ui-sref='profile.edit.billing'>Billing</a></li>
-      <li ui-sref-active='active'><a ui-sref='profile.edit.size'>Size</a></li>
-    </ul>
+      <ul class='nav'>
+        <li ui-sref-active='active'><a ui-sref='profile.edit.profile'>Profile</a></li>
+        <li ui-sref-active='active'><a ui-sref='profile.edit.shipping'>Shipping</a></li>
+        <li ui-sref-active='active'><a ui-sref='profile.edit.billing'>Billing</a></li>
+        <li ui-sref-active='active'><a ui-sref='profile.edit.size'>Size</a></li>
+      </ul>
 
+    </div>
+
+    <div class="col-md-9 item-container">
+      <div ui-view></div>
+    </div>
   </div>
-
-  <div class="col-md-9 item-container">
-    <div ui-view></div>
-  </div>
+  
 </div>

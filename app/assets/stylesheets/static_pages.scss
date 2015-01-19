@@ -11,13 +11,6 @@
 * URL: http://blacktie.co/
 */
 
-.main {
-  margin-top: -21px;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
 #home {
   padding: 0;
   color: #fff;
@@ -26,6 +19,7 @@
   background-position: center center;
   background-size: cover;
   min-height: 680px;
+  margin-top: -21px;
 }
 #home h1 {
   margin-top: 0;

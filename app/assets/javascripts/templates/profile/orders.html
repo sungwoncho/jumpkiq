@@ -1,32 +1,34 @@
-<div class="row">
-  <div class="col-lg-12 item-container">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 item-container">
 
-    <div flash-alert active-class="in alert" class="fade text-center">
-      <span class="alert-message">{{ flash.message }}</span>
+      <div flash-alert active-class="in alert" class="fade text-center">
+        <span class="alert-message">{{ flash.message }}</span>
+      </div>
+
+      <h3>My Orders</h3>
+
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Kiq Number</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat='kiq in kiqs'>
+            <td>{{ kiq.id }}</td>
+            <td>{{ kiq.created_at | date:"MM/dd/yyyy" }}</td>
+            <td>{{ kiq.status }}</td>
+            <td>
+              <a ng-show="kiq.status == 'requested'" ng-click='cancelKiq(kiq)'>Cancel</a>
+              <!-- <a ng-show="kiq.status == 'completed'">Feedback</a> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <h3>My Orders</h3>
-
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>Kiq Number</th>
-          <th>Order Date</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat='kiq in kiqs'>
-          <td>{{ kiq.id }}</td>
-          <td>{{ kiq.created_at | date:"MM/dd/yyyy" }}</td>
-          <td>{{ kiq.status }}</td>
-          <td>
-            <a ng-show="kiq.status == 'requested'" ng-click='cancelKiq(kiq)'>Cancel</a>
-            <!-- <a ng-show="kiq.status == 'completed'">Feedback</a> -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>

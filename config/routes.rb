@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   root 'static_pages#home'
+  get 'help' => 'static_pages#help'
 
   scope 'api', defaults: { format: :json } do
     get 'users' => 'users#show'

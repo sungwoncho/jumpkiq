@@ -1,15 +1,17 @@
-<div class="row">
-  <aside class="col-md-3">
-    <div ng-include="'profile/partial/stylist.html'"></div>
+<div class="container">
+  <div class="row">
+    <aside class="col-md-3">
+      <div ng-include="'profile/partial/stylist.html'"></div>
 
-    <a class='btn btn-success' ng-click='requestKiq()'>Request a Kiq</a>
-  </aside>
+      <a class='btn btn-success' ng-click='requestKiq()'>Request a Kiq</a>
+    </aside>
 
-  <div class="col-md-9">
-    <div flash-alert active-class="in alert" class="fade text-center">
-      <span class="alert-message">{{ flash.message }}</span>
+    <div class="col-md-9">
+      <div flash-alert active-class="in alert" class="fade text-center">
+        <span class="alert-message">{{ flash.message }}</span>
+      </div>
+
+      <div ng-include="'profile/partial/dashboard.html'"></div>
     </div>
-
-    <div ng-include="'profile/partial/dashboard.html'"></div>
   </div>
 </div>
