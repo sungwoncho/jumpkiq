@@ -7,6 +7,7 @@ class ChargesController < ApplicationController
   def create
     if @kiq.status == 'sent'
       @payment = Stripe::Charge.create(amount: @amount, currency: 'aud', customer: @user.stripe_customer_id)
+      @kiq.update(status: 'completed')
       render nothing: true, status: 200
     else
       render nothing: true, status: :method_not_allowed

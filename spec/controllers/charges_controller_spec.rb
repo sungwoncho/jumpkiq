@@ -63,6 +63,11 @@ RSpec.describe ChargesController, :type => :controller do
         it 'returns 200 status' do
           expect(response.status).to eq 200
         end
+
+        it "updates the kiqs status to 'completed'" do
+          kiq.reload
+          expect(kiq.status).to eq 'completed'
+        end
       end
 
       context "when the kiq's status is not 'sent'" do
