@@ -1,0 +1,25 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Kiq Number</th>
+      <th>Order Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= kiq.id %></td>
+      <td><%= kiq.created_at %></td>
+      <td><%= kiq.status %></td>
+      <td>
+        <% if kiq.status == 'sent' %>
+          <%= form_tag "api/kiqs/#{kiq.id}/charges", method: :post, remote: true do %>
+            <%= text_field_tag :amount %>
+            <%= submit_tag 'Charge' %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
