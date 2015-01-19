@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.appear.min
+//= require jquery-easing
 //= require angular
 //= require angular-animate
 //= require angular-ui-router

@@ -13,7 +13,8 @@
       "angular-flash": "latest",
       "angular-devise": "latest",
       "angular-resource": "latest",
-      "angular-payments": "latest"
+      "angular-payments": "latest",
+      "jquery-easing": "latest"
     }
   }
 }
