@@ -13,9 +13,12 @@ class KiqsController < ApplicationController
 
   def create
     if current_user.ready_to_order?
-      @kiq = current_user.kiqs.create
-      current_user.stylist.kiqs << @kiq
-      render :show
+      @kiq = current_user.kiqs.new(stylist_id: current_user.stylist.id)
+
+      if @kiq.save
+        KiqsMailer.new_order(@kiq).deliver_later
+        render :show
+      end
     else
       head status: :method_not_allowed
     end
