@@ -1,5 +1,5 @@
 angular.module('sidekiq')
-  .controller('signupController', ['$scope', '$window', 'Auth', '$location', 'flash', function($scope, $window, Auth, $location, flash) {
+  .controller('signupController', ['$scope', '$window', '$timeout', 'Auth', '$location', 'flash', function($scope, $window, $timeout, Auth, $location, flash) {
     $scope.formData = {};
 
 
@@ -8,8 +8,11 @@ angular.module('sidekiq')
 
       Auth.register(credentials)
         .then(function(registeredUser) {
-          // $location.path('/profile');
-          $window.location.href='/profile/main'
+          $scope.registrationComplete = true;
+
+          $timeout(function () {
+            $window.location.href='/profile/main'
+          }, 500)
         }, function(error) {
           var errors = error.data.errors;
 
