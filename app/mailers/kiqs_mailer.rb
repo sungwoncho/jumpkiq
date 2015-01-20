@@ -9,7 +9,7 @@ class KiqsMailer < ApplicationMailer
     @user = @kiq.user
 
     stylist = @stylist.email
-    subject = 'New order from #{@user.firstname}'
+    subject = "New order from #{@user.firstname}"
 
     mail to: stylist, cc: ADMIN_EMAIL, subject: subject
   end
