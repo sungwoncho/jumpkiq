@@ -1,0 +1,75 @@
+<div class="form-group row">
+
+  <div class="col-sm-12 text-center">
+    <h3>What are your sizes?</h3>
+  </div>
+
+  <div class="col-sm-4">
+    <label for="height">Height (cm)</label>
+    <input type="number" class="form-control" name="height" ng-model="formData.height">
+  </div>
+
+  <div class="col-sm-4">
+    <label for="weight">Weight (kg)</label>
+    <input type="number" class="form-control" name="weight" ng-model="formData.weight">
+  </div>
+
+  <div class="col-sm-4">
+    <label for="shirt-size">Casual shirt size</label>
+    <select class="form-control" name='shirt-size' ng-model="formData.casual_shirt_size">
+      <option value='xs'>XS</option>
+      <option value='s'>S</option>
+      <option value='m'>M</option>
+      <option value='l'>L</option>
+      <option value='xl'>XL</option>
+      <option value='xxl'>XXL</option>
+      <option value='other'>Other</option>
+    </select>
+  </div>
+
+  <div class="col-sm-4">
+    <label for="waist">Waist</label>
+    <select class='form-control' id='waist' ng-model='formData.waist'>
+      <option value="0">I don't know</option>
+      <option value='28'>28</option>
+      <option value='29'>29</option>
+      <option value='30'>30</option>
+      <option value='31'>31</option>
+      <option value='32'>32</option>
+      <option value='33'>33</option>
+      <option value='34'>34</option>
+      <option value='35'>35</option>
+      <option value='36'>36</option>
+      <option value='37'>37</option>
+      <option value='38'>38</option>
+      <option value='39'>39</option>
+      <option value='40'>40</option>
+      <option value='40'>40</option>
+      <option value='41'>41</option>
+      <option value='42'>42</option>
+      <option value='999'>Other</option>
+    </select>
+  </div>
+
+  <div class="col-sm-4">
+    <label for="inseam">Inseam</label>
+    <select class='form-control' id='inseam' ng-model='formData.inseam'>
+      <option value='0'>I don't know.</option>
+      <option value='28'>28</option>
+      <option value='30'>29</option>
+      <option value='32'>32</option>
+      <option value='34'>34</option>
+      <option value='36'>36</option>
+      <option value='999'>Other</option>
+    </select>
+  </div>
+
+</div>
+
+<div class="form-group row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref='signup.profile' ng-click="checkInput1($event)" class='btn btn-block btn-info'>
+      Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+  </div>
+</div>

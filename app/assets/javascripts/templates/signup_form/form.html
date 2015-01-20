@@ -1,21 +1,12 @@
 <div id="fb-pixel" ng-class="{'fb-conversion': registrationComplete}"></div>
 
+<div ng-include="'signup_form/partial/progress.html'"></div>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
 
       <div id="form-container">
-
-        <div class="page-header text-center">
-          <h2>Get Sidekiq!</h2>
-        </div>
-
-        <div id="status-buttons" class="text-center">
-          <a ui-sref-active='active' ui-sref='.measurements'><span>1</span> About you</a>
-          <a ui-sref-active='active' ui-sref='.needs' ng-click='checkInput1($event)'><span>2</span> Needs</a>
-          <a ui-sref-active='active' ui-sref='.styles' ng-click='checkInput2($event)'><span>3</span> Styles</a>
-          <a ui-sref-active='active' ui-sref='.account' ng-click='checkInput2($event)'><span>4</span> Account</a>
-        </div>
 
         <div flash-alert active-class="in alert" class="fade text-center">
           <span class="alert-message">{{ flash.message }}</span>

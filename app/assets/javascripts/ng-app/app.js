@@ -26,9 +26,9 @@ angular
 
         // nested states
         // url will also be nested (i.e. /signup/measurements)
-        .state('signup.measurements', {
-          url: '/measurements',
-          templateUrl: 'signup_form/measurements.html'
+        .state('signup.sizes', {
+          url: '/sizes',
+          templateUrl: 'signup_form/sizes.html'
         })
         .state('signup.needs', {
           url: '/needs',
@@ -38,9 +38,9 @@ angular
           url: '/styles',
           templateUrl: 'signup_form/styles.html'
         })
-        .state('signup.account', {
-          url: '/account',
-          templateUrl: 'signup_form/account.html'
+        .state('signup.profile', {
+          url: '/profile',
+          templateUrl: 'signup_form/profile.html'
         })
 
       .state('profile', {

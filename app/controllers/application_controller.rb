@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) do |u|
         u.permit(:email, :password, :password_confirmation,
           :firstname, :lastname,
-          :height, :weight, :casual_shirt_size,
+          :height, :weight, :casual_shirt_size, :waist, :inseam,
           :long_sleeve, :short_sleeve, :polo_shirt, :pants, :shorts,
           :smart_style, :casual_style, :hipster_style, :classic_style)
       end
