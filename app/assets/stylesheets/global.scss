@@ -1,3 +1,27 @@
+// To make bootstrap alert work with rails flash[:notice], and flash[:alert]
+$alert-danger-bg: #D9534F;
+$alert-danger-border: transparent;
+$alert-danger-text: #FFF;
+
+$alert-success-bg: #5CB85C;
+$alert-success-border: transparent;
+$alert-success-text: #FFF;
+
+@mixin alert-variant($background, $border, $text) {
+  background-color: $background;
+  border-color: $border;
+  color: $text;
+}
+
+.alert-notice {
+  @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+}
+
+.alert-alert {
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+}
+// Flash workaround ends
+
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url(asset_path('glyphicons-halflings-regular.eot'));
@@ -23,6 +47,16 @@ body {
 ol, ul {
   list-style: none;
 }
+
+.item-container {
+  background-color: #fff;
+  padding: 30px;
+}
+
+.btn-margin-right {
+  margin-right: 15px;
+}
+
 
 
 /* The below overwrites the default Bootstrap styles */

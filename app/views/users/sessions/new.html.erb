@@ -1,35 +1,46 @@
-<div class="row item-container">
-  <div class="col-md-6">
+<div class="container">
 
-    <h2>Log in</h2>
-
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email, required: false, autofocus: true %>
-      <%= f.input :password, required: false %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'shared/flash' %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+    <div class="col-md-6">
+
+      <div class="item-container">
+        <h3>Log in</h3>
+
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true %>
+          <%= f.input :password, required: false %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Log in", class: 'btn btn-success btn-margin-right' %> <%= render "users/shared/links" %>
+        </div>
+        <% end %>
+      </div>
+
+
     </div>
-    <% end %>
 
+    <div class="col-md-6">
 
+      <div class="item-container">
+        <h3>Not a member?</h3>
 
-    <%= render "users/shared/links" %>
+        <p class='text-muted'>
+          Sidekiq makes you look better so that you can focus on other things you like. Make clothing simple. You can get started for free!
+        </p>
 
-  </div>
+        <div class="form-actions">
+          <%= link_to 'Get started', '/signup/styles', class: 'btn btn-success' %>
+        </div>
+      </div>
 
-  <div class="col-md-6">
-
-    <h2>Not a member?</h2>
-
-    <p>
-      Make a profile. No credit card is required.
-    </p>
-
-    <%= link_to 'Get started', '/signup/measurements', class: 'btn btn-success' %>
+    </div>
 
   </div>
 
