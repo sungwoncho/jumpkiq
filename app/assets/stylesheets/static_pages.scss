@@ -98,3 +98,22 @@
 .footer-menu {
   margin-bottom: 50px;
 }
+
+#faq {
+  h1, h2, h3, h4 {
+    text-transform: uppercase;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  ol.questions {
+
+    padding: 0;
+    
+    .question {
+      margin-bottom: 40px;
+    }
+  }
+}
