@@ -32,7 +32,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # stylists and admins
   get 'stylists/dashboard' => 'stylists#dashboard'
+  resources :items
 
   # angular routes
   get '/signup/*all' => 'application#index'
