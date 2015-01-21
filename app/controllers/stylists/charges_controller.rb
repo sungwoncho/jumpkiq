@@ -1,4 +1,4 @@
-class ChargesController < ApplicationController
+class Stylists::ChargesController < ApplicationController
   before_action :authenticate_stylist!
   before_action :set_kiq
   before_action :set_user
@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
     if @kiq.status == 'sent'
       @payment = Stripe::Charge.create(amount: @amount, currency: 'aud', customer: @user.stripe_customer_id)
       @kiq.update(status: 'completed')
-      render nothing: true, status: 200
+      redirect_to :back, notice: 'Successfully charged the kiq'
     else
       render nothing: true, status: :method_not_allowed
     end
@@ -28,6 +28,6 @@ class ChargesController < ApplicationController
     end
 
     def set_amount
-      @amount = params[:amount]
+      @amount = params[:amount].to_i
     end
 end

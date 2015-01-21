@@ -26,18 +26,18 @@ Rails.application.routes.draw do
     put 'customers' => 'customers#update'
     delete 'customers' => 'customers#destroy'
 
-    resources :kiqs, except: [:new, :edit] do
-      member do
-        resources :charges, only: [:create, :destroy]
-      end
-    end
+    resources :kiqs, except: [:new, :edit]
   end
 
   # stylists specific routes
   namespace :stylists do
     get 'dashboard' => 'pages#dashboard'
     resources :items
-    resources :kiqs, only: [:index, :show, :edit, :update]
+    resources :kiqs, only: [:index, :show, :edit, :update] do
+      member do
+        resources :charges, only: [:create, :destroy]
+      end
+    end
   end
 
   # angular routes

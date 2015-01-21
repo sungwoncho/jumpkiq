@@ -1,8 +1,7 @@
 require 'rails_helper'
 require 'stripe_mock'
 
-RSpec.describe ChargesController, :type => :controller do
-  render_views
+RSpec.describe Stylists::ChargesController, :type => :controller do
 
   let(:json) { JSON.parse(response.body, symbolize_names: true) }
 
@@ -25,19 +24,20 @@ RSpec.describe ChargesController, :type => :controller do
     context 'when not logged in' do
       before :each do
         sign_out stylist
-        post :create, id: kiq, format: :json
+        post :create, id: kiq
       end
 
       it 'return 401 status' do
-        expect(response.status).to eq 401
+        expect(response).to require_stylist_login
       end
     end
 
     context 'when logged in' do
       context "when the kiq's status is 'sent'" do
         before :each do
+          request.env["HTTP_REFERER"] = stylists_kiqs_url unless request.nil? || request.env.nil? # to test redirect_to :back
           kiq.update(status: 'sent')
-          post :create, id: kiq, amount: 80, format: :json
+          post :create, id: kiq, amount: 80
         end
 
         it "assigns the kiq to @kiq" do
@@ -60,8 +60,8 @@ RSpec.describe ChargesController, :type => :controller do
           expect(assigns(:payment).amount).to eq 80
         end
 
-        it 'returns 200 status' do
-          expect(response.status).to eq 200
+        it 'redirects back' do
+          expect(response).to redirect_to :back
         end
 
         it "updates the kiqs status to 'completed'" do
@@ -72,7 +72,7 @@ RSpec.describe ChargesController, :type => :controller do
 
       context "when the kiq's status is not 'sent'" do
         before :each do
-          post :create, id: kiq, format: :json
+          post :create, id: kiq
         end
 
         it 'does not charge customer' do
