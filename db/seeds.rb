@@ -54,7 +54,7 @@ puts "Created #{User.count} users."
   Kiq.create!(
     user_id: n,
     stylist_id: 1,
-    status: ['requested', 'pending', 'completed', 'cancelled'].sample
+    status: ['requested', 'sent', 'completed', 'cancelled'].sample
   )
 end
 

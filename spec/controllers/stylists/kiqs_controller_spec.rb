@@ -22,7 +22,7 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
     context 'when logged in' do
 
       let!(:kiq_1) { create(:kiq, stylist: stylist, status: 'requested') }
-      let!(:kiq_2) { create(:kiq, stylist: stylist, status: 'pending') }
+      let!(:kiq_2) { create(:kiq, stylist: stylist, status: 'sent') }
       let!(:kiq_3) { create(:kiq, stylist: stylist, status: 'completed') }
       let!(:kiq_4) { create(:kiq, stylist: stylist, status: 'cancelled') }
 
@@ -56,9 +56,9 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
         end
       end
 
-      context "with params[:status] = 'pending'" do
+      context "with params[:status] = 'sent'" do
         before :each do
-          get :index, status: 'pending'
+          get :index, status: 'sent'
         end
 
         it 'assigns all pending kiqs to @kiqs' do
@@ -167,7 +167,8 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
 
       context 'with valid params' do
         before :each do
-          put :update, id: kiq, kiq: attributes_for(:kiq, status: 'pending')
+          request.env["HTTP_REFERER"] = stylists_kiqs_url unless request.nil? || request.env.nil? # to test redirect_to :back
+          put :update, id: kiq, kiq: attributes_for(:kiq, status: 'sent')
         end
 
         it 'assigns the requested kiq to @kiq' do
@@ -176,11 +177,11 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
 
         it 'updates the kiq' do
           kiq.reload
-          expect(kiq.status).to eq 'pending'
+          expect(kiq.status).to eq 'sent'
         end
 
         it 'redirects to kiq' do
-          expect(response).to redirect_to(stylists_kiq_path(kiq))
+          expect(response).to redirect_to :back
         end
       end
 

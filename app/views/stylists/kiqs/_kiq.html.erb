@@ -18,6 +18,11 @@
             <%= text_field_tag :amount %>
             <%= submit_tag 'Charge' %>
           <% end %>
+        <% elsif kiq.status == 'requested' %>
+          <%= simple_form_for kiq, url: stylists_kiq_path(kiq) do |f| %>
+            <%= f.hidden_field :status, value: 'sent' %>
+            <%= f.submit 'Sent', class: 'btn btn-sm btn-default' %>
+          <% end %>
         <% end %>
       </td>
     </tr>

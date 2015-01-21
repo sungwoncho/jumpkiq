@@ -6,7 +6,7 @@ class Stylists::KiqsController < ApplicationController
   respond_to :html
 
   def index
-    if ['requested', 'pending', 'completed', 'cancelled'].include? @status
+    if ['requested', 'sent', 'completed', 'cancelled'].include? @status
       @kiqs = Kiq.where(status: @status)
     else
       @kiqs = Kiq.all
@@ -20,8 +20,9 @@ class Stylists::KiqsController < ApplicationController
   end
 
   def update
-    @kiq.update(kiq_params)
-    respond_with(:stylists, @kiq)
+    if @kiq.update(kiq_params)
+      redirect_to :back
+    end
   end
 
 

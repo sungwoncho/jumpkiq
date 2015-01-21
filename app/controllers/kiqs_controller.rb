@@ -1,6 +1,5 @@
 class KiqsController < ApplicationController
   before_action :authenticate_user_or_stylist!, except: :update
-  before_action :authenticate_stylist!, only: :update
   before_action :set_kiq, only: [:show, :update, :destroy]
   before_action :get_status, only: :update
 
@@ -22,14 +21,6 @@ class KiqsController < ApplicationController
     else
       head status: :method_not_allowed
     end
-  end
-
-  def update
-    case @status
-    when 'pending' then @kiq.update(status: 'pending')
-    when 'completed' then @kiq.update(status: 'completed')
-    end
-    render :show
   end
 
   def destroy

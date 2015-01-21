@@ -198,7 +198,7 @@ RSpec.describe KiqsController, :type => :controller do
 
         context "when kiq's status is something other than 'requested'" do
           before :each do
-            kiq.update(status: 'pending')
+            kiq.update(status: 'sent')
             delete :destroy, format: :json, id: kiq
           end
 
@@ -207,61 +207,6 @@ RSpec.describe KiqsController, :type => :controller do
           end
         end
 
-      end
-    end
-  end
-
-  context 'for stylists' do
-    before :each do
-      sign_in stylist
-    end
-
-    describe 'PUT update' do
-      context 'when not logged in' do
-        before :each do
-          sign_out stylist
-          put :update, format: :json, id: kiq
-        end
-
-        it 'returns 401 status' do
-          expect(response.status).to eq 401
-        end
-      end
-
-      context 'when logged in' do
-        before :each do
-          kiq.update(status: 'requested')
-        end
-
-        context 'with params[:status] = pending' do
-          before :each do
-            put :update, format: :json, id: kiq, status: 'pending'
-          end
-
-          it 'sets params[:status] as @status' do
-            expect(assigns(:status)).to eq 'pending'
-          end
-
-          it "updates kiq's status to pending"do
-            kiq.reload
-            expect(kiq.status).to eq 'pending'
-          end
-        end
-
-        context 'with params[:status] = completed' do
-          before :each do
-            put :update, format: :json, id: kiq, status: 'completed'
-          end
-
-          it 'sets params[:status] as @status' do
-            expect(assigns(:status)).to eq 'completed'
-          end
-
-          it "updates kiq's status to completed"do
-            kiq.reload
-            expect(kiq.status).to eq 'completed'
-          end
-        end
       end
     end
   end
