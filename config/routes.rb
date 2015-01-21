@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   namespace :stylists do
     get 'dashboard' => 'pages#dashboard'
     resources :items
-    resources :kiqs
+    resources :kiqs, only: [:index, :show, :edit, :update]
   end
 
   # angular routes
