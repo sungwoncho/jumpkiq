@@ -34,9 +34,10 @@ Rails.application.routes.draw do
   end
 
   # stylists specific routes
-  scope :stylists do
-    get 'dashboard' => 'stylists#dashboard'
+  namespace :stylists do
+    get 'dashboard' => 'pages#dashboard'
     resources :items
+    resources :kiqs
   end
 
   # angular routes

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe StylistsController, :type => :controller do
+RSpec.describe Stylists::PagesController, :type => :controller do
   let(:stylist) { create(:stylist) }
 
   before :each do

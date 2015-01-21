@@ -1,0 +1,2 @@
+module Stylists::KiqsHelper
+end

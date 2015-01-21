@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Stylists::ItemsController < ApplicationController
   before_action :authenticate_stylist!
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :get_items, only: :index
@@ -24,17 +24,17 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save
-    respond_with(@item)
+    respond_with(:stylists, @item)
   end
 
   def update
     @item.update(item_params)
-    respond_with(@item)
+    respond_with(:stylists, @item)
   end
 
   def destroy
     @item.destroy
-    respond_with(@item)
+    respond_with(:stylists, @item)
   end
 
   private
