@@ -75,6 +75,16 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
           expect(assigns(:kiqs)).to match_array [kiq_3]
         end
       end
+
+      context "with params[:status] = 'cancelled'" do
+        before :each do
+          get :index, status: 'cancelled'
+        end
+
+        it 'assigns all cancelled kiqs to @kiqs' do
+          expect(assigns(:kiqs)).to match_array [kiq_4]
+        end
+      end
     end
   end
 

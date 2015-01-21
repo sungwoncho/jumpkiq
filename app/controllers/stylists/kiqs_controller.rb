@@ -6,7 +6,7 @@ class Stylists::KiqsController < ApplicationController
   respond_to :html
 
   def index
-    if ['requested', 'pending', 'completed'].include? @status
+    if ['requested', 'pending', 'completed', 'cancelled'].include? @status
       @kiqs = Kiq.where(status: @status)
     else
       @kiqs = Kiq.all
