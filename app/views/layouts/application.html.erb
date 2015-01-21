@@ -15,6 +15,7 @@
 <body ng-app='sidekiq'>
 
   <%= render 'layouts/header' if controller.controller_name == 'static_pages' || devise_controller? %>
+  <%= render 'layouts/stylist_header' if controller.controller_name == 'stylists' %>
 
   <%= yield %>
 
