@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get 'help' => 'static_pages#help'
 
+  # API routes
   scope 'api', defaults: { format: :json } do
     get 'users' => 'users#show'
     put 'users' => 'users#update'
@@ -32,9 +33,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # stylists and admins
-  get 'stylists/dashboard' => 'stylists#dashboard'
-  resources :items
+  # stylists specific routes
+  scope :stylists do
+    get 'dashboard' => 'stylists#dashboard'
+    resources :items
+  end
 
   # angular routes
   get '/signup/*all' => 'application#index'
