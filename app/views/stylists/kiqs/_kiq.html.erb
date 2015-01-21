@@ -14,7 +14,7 @@
       <td><%= kiq.status %></td>
       <td>
         <% if kiq.status == 'sent' %>
-          <%= form_tag "api/kiqs/#{kiq.id}/charges", method: :post, remote: true do %>
+          <%= form_tag stylists_charges_path(id: kiq.id) do %>
             <%= text_field_tag :amount %>
             <%= submit_tag 'Charge' %>
           <% end %>

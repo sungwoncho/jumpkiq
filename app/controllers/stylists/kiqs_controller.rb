@@ -21,7 +21,7 @@ class Stylists::KiqsController < ApplicationController
 
   def update
     if @kiq.update(kiq_params)
-      redirect_to :back
+      redirect_to :back, notice: 'successfully updated the status!'
     end
   end
 

@@ -1,5 +1,5 @@
 class KiqsController < ApplicationController
-  before_action :authenticate_user_or_stylist!, except: :update
+  before_action :authenticate_user!
   before_action :set_kiq, only: [:show, :update, :destroy]
   before_action :get_status, only: :update
 
@@ -33,10 +33,6 @@ class KiqsController < ApplicationController
   end
 
   protected
-
-    def authenticate_user_or_stylist!
-      authenticate_user! || authenticate_stylist!
-    end
 
     def set_kiq
       @kiq = Kiq.find(params[:id])
