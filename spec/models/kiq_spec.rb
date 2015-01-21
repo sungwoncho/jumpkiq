@@ -8,5 +8,7 @@ RSpec.describe Kiq, :type => :model do
   describe 'association' do
     it { should belong_to(:user) }
     it { should belong_to(:stylist) }
+    it { should have_many(:kiq_items) }
+    it { should have_many(:items).through(:kiq_items) }
   end
 end
