@@ -37,15 +37,25 @@ User.create!(
 
 (1..10).each do |n|
   User.create!(
-  firstname: Faker::Name.first_name,
-  lastname: Faker::Name.last_name,
-  email: "test_#{n}@example.com",
-  password: "pass1234",
-  password_confirmation: "pass1234",
-  height: 175,
-  weight: 72,
-  casual_shirt_size: 'M'
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    email: "test_#{n}@example.com",
+    password: "pass1234",
+    password_confirmation: "pass1234",
+    height: 175,
+    weight: 72,
+    casual_shirt_size: 'M'
   )
 end
 
 puts "Created #{User.count} users."
+
+(1..10).each do |n|
+  Kiq.create!(
+    user_id: n,
+    stylist_id: 1,
+    status: ['requested', 'pending', 'completed', 'cancelled'].sample
+  )
+end
+
+puts "Created #{Kiq.count} kiqs."
