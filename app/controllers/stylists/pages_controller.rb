@@ -1,4 +1,4 @@
-class StylistsController < ApplicationController
+class Stylists::PagesController < ApplicationController
   before_action :authenticate_stylist!
   before_action :set_stylist
   before_action :set_kiqs

@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe ItemsController, :type => :controller do
+RSpec.describe Stylists::ItemsController, :type => :controller do
 
   let(:stylist) { create(:stylist) }
 
@@ -110,7 +110,7 @@ RSpec.describe ItemsController, :type => :controller do
 
       it "redirects to the created item" do
         post :create, item: attributes_for(:item)
-        expect(response).to redirect_to(Item.last)
+        expect(response).to redirect_to(stylists_item_path(Item.last))
       end
     end
 
@@ -154,7 +154,7 @@ RSpec.describe ItemsController, :type => :controller do
       end
 
       it "redirects to the item" do
-        expect(response).to redirect_to(item)
+        expect(response).to redirect_to(stylists_item_path(item))
       end
     end
 
@@ -195,7 +195,7 @@ RSpec.describe ItemsController, :type => :controller do
 
     it "redirects to the items list" do
       delete :destroy, id: @item
-      expect(response).to redirect_to(items_url)
+      expect(response).to redirect_to(stylists_items_url)
     end
   end
 
