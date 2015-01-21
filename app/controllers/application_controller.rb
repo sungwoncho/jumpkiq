@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     '/profile/main'
   end
 
+  def after_sign_in_path_for(stylist)
+    dashboard_path
+  end
+
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) do |u|
