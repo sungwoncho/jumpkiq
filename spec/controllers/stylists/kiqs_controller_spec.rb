@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Stylists::KiqsController, :type => :controller do
   let(:stylist) { create(:stylist) }
+  let(:stylist_2) { create(:stylist) }
 
   before :each do
     sign_in stylist
@@ -25,13 +26,14 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
       let!(:kiq_2) { create(:kiq, stylist: stylist, status: 'sent') }
       let!(:kiq_3) { create(:kiq, stylist: stylist, status: 'completed') }
       let!(:kiq_4) { create(:kiq, stylist: stylist, status: 'cancelled') }
+      let!(:kiq_5) { create(:kiq, stylist: stylist_2) }
 
       context 'with no params' do
         before :each do
           get :index
         end
 
-        it 'assigns all kiqs to @kiqs' do
+        it "assigns all of stylist's kiqs to @kiqs" do
           expect(assigns(:kiqs)).to match_array [kiq_1, kiq_2, kiq_3, kiq_4]
         end
       end

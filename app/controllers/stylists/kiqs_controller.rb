@@ -7,9 +7,9 @@ class Stylists::KiqsController < ApplicationController
 
   def index
     if ['requested', 'sent', 'completed', 'cancelled'].include? @status
-      @kiqs = Kiq.where(status: @status)
+      @kiqs = Kiq.where(stylist: current_stylist, status: @status)
     else
-      @kiqs = Kiq.all
+      @kiqs = current_stylist.kiqs
     end
   end
 
