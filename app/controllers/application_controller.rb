@@ -6,12 +6,11 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json, if: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(user)
-    '/profile/main'
-  end
-
-  def after_sign_in_path_for(stylist)
-    dashboard_path
+  def after_sign_in_path_for(resource)
+    case resource
+    when User then '/profile/main'
+    when Stylist then stylists_dashboard_path
+    end
   end
 
   protected
