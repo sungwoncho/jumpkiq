@@ -13,6 +13,7 @@
 
       <% if stylist_signed_in? %>
 
+      <li><%= link_to 'Dashboard', stylists_dashboard_path %></li>
       <li><%= link_to 'Logout', destroy_stylist_session_path, method: :delete %></li>
 
       <% else %>
