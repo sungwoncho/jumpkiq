@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'addresses' => 'addresses#show'
     post 'addresses' => 'addresses#create'
     put 'addresses' => 'addresses#update'
+    delete 'addresses' => 'addresses#destroy'
 
     get 'customers' => 'customers#show'
     post 'customers' => 'customers#create'

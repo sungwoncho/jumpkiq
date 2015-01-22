@@ -134,5 +134,57 @@ RSpec.describe AddressesController, :type => :controller do
     end
   end
 
+  describe 'DELETE destroy' do
+    let!(:address) { create(:address, user: user) }
+
+    context 'when not logged in' do
+      before :each do
+        sign_out user
+        delete :destroy, format: :json, id: address
+      end
+
+      it 'returns 401 status' do
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'when logged in' do
+      context 'when user has kiqs with requested status' do
+        before :each do
+          create(:kiq, user: user, status: 'requested')
+          delete :destroy, format: :json, id: address
+        end
+
+        it 'returns method not allowed status' do
+          expect(response.status).to eq 405
+        end
+      end
+
+      context 'when user has kiqs with sent status' do
+        before :each do
+          create(:kiq, user: user, status: 'sent')
+          delete :destroy, format: :json, id: address
+        end
+
+        it 'returns method not allowed status' do
+          expect(response.status).to eq 405
+        end
+      end
+
+      context 'when user has no requested or sent kiqs' do
+        it 'deletes the Address' do
+          expect {
+            delete :destroy, format: :json, id: address
+          }.to change(Address, :count).by(-1)
+        end
+
+        it 'returns 204 status' do
+          delete :destroy, format: :json, id: address
+          expect(response.status).to eq 204
+        end
+      end
+    end
+  end
+
 
 end

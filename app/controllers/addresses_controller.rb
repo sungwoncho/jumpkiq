@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
-  before_action :set_address, only: [:show, :update]
+  before_action :set_address, only: [:show, :update, :destroy]
 
   def show
   end
@@ -24,7 +24,16 @@ class AddressesController < ApplicationController
     end
   end
 
-  protected
+  def destroy
+    if current_user.requested_kiqs.present? || current_user.sent_kiqs.present?
+      render nothing: true, status: :method_not_allowed
+    else
+      @address.destroy
+      head 204
+    end
+  end
+
+  private
     def set_user
       @user = current_user
     end
@@ -33,7 +42,6 @@ class AddressesController < ApplicationController
       @address = @user.address
     end
 
-  private
     def address_params
       params.require(:address).permit(:street_address, :secondary_address, :city, :state, :postcode)
     end
