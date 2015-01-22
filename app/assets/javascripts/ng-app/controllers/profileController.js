@@ -46,7 +46,20 @@ angular.module('sidekiq')
         $scope.address.exists = true;
         $scope.user.order.has_shipping_address = true;
       })
-    }
+    };
+
+    $scope.deleteAddress = function () {
+      $scope.address.$delete(function () {
+        flash.success = 'Successfully removed the address.';
+
+        Addresses.get({}, function(address) {
+          $scope.address = address;
+        })
+
+      }, function () {
+        flash.error = 'You cannot remove the address while a Kiq is in progress.';
+      });
+    };
 
     $scope.handleStripe = function (status, response) {
       if (response.error) {
@@ -74,15 +87,6 @@ angular.module('sidekiq')
         $scope.customer = response;
       });
     };
-
-    $scope.deleteAddress = function () {
-      $scope.address.$delete(function () {
-        flash.success = 'Successfully removed the address.';
-        $scope.address = null;
-      }, function () {
-        flash.error = 'You cannot remove the address while a Kiq is in progress.';
-      });
-    }
 
     $scope.getKiqErrorMessage = function () {
       if (!$scope.user.order.has_style) {
