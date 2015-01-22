@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <h3>Logistics</h3>
+      <ul>
+        <li>Kiq number: <%= @kiq.id %></li>
+        <li>Ordered from: <%= @kiq.user.firstname %> <%= @kiq.user.lastname %></li>
+        <li>Ordered at: <%= @kiq.created_at %></li>
+        <li>Status: <%= @kiq.status %></li>
+      </ul>
+
+      <h3>User information</h3>
+      <ul>
+        <li>Name: <%= @kiq.user.firstname %> <%= @kiq.user.lastname %></li>
+        <li>Height (cm): <%= @kiq.user.height %></li>
+        <li>Weight (kg): <%= @kiq.user.weight %></li>
+        <li>Casual shirt size: <%= @kiq.user.casual_shirt_size %></li>
+        <li>Waist (cm): <%= @kiq.user.waist %></li>
+        <li>Inseam (cm): <%= @kiq.user.inseam %></li>
+      </ul>
+
+      <h3>Style preferences</h3>
+      <ul>
+        <li>Smart style: <%= @kiq.user.smart_style %></li>
+        <li>Casual style: <%= @kiq.user.casual_style %></li>
+        <li>Hipster style: <%= @kiq.user.hipster_style %></li>
+        <li>Classic style: <%= @kiq.user.classic_style %></li>
+      </ul>
+
+      <h3>Contact and address</h3>
+      <ul>
+        <li>Email: <%= @kiq.user.email %></li>
+        <li>Address: <%= @kiq.user.address.full_address if @kiq.user.address %></li>
+      </ul>
+
+      <%= link_to 'Back', stylists_kiqs_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
