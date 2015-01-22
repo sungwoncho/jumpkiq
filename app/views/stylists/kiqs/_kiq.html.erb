@@ -16,12 +16,12 @@
         <% if kiq.status == 'sent' %>
           <%= form_tag stylists_charges_path(id: kiq.id) do %>
             <%= text_field_tag :amount %>
-            <%= submit_tag 'Charge' %>
+            <%= submit_tag 'Charge', data: { confirm: 'Are you sure?' } %>
           <% end %>
         <% elsif kiq.status == 'requested' %>
           <%= simple_form_for kiq, url: stylists_kiq_path(kiq) do |f| %>
             <%= f.hidden_field :status, value: 'sent' %>
-            <%= f.submit 'Sent', class: 'btn btn-sm btn-default' %>
+            <%= f.submit 'Sent', class: 'btn btn-sm btn-default', data: { confirm: 'Are you sure?' } %>
           <% end %>
         <% end %>
 
