@@ -158,9 +158,17 @@ RSpec.describe KiqsController, :type => :controller do
               expect(Kiq.last.stylist).to eq stylist
             end
 
-            it 'queues the email' do
+            it 'queues the email for stylist' do
               message_delivery = instance_double(ActionMailer::MessageDelivery)
               expect(KiqsMailer).to receive(:new_order).with(a_kind_of(Kiq)).and_return(message_delivery)
+              expect(message_delivery).to receive(:deliver_later)
+
+              post :create, format: :json
+            end
+
+            it 'queues the order confirmation email for user' do
+              message_delivery = instance_double(ActionMailer::MessageDelivery)
+              expect(KiqsMailer).to receive(:order_received).with(a_kind_of(Kiq)).and_return(message_delivery)
               expect(message_delivery).to receive(:deliver_later)
 
               post :create, format: :json

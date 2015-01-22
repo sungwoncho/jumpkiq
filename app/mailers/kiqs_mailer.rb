@@ -13,4 +13,14 @@ class KiqsMailer < ApplicationMailer
 
     mail to: stylist, cc: ADMIN_EMAIL, subject: subject
   end
+
+  def order_received(kiq)
+    @kiq = kiq
+    @user = @kiq.user
+
+    user = @user.email
+    subject = 'Thank you. Your order was received.'
+
+    mail to: user, cc: ADMIN_EMAIL, subject: subject
+  end
 end

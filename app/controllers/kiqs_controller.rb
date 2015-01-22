@@ -16,6 +16,7 @@ class KiqsController < ApplicationController
 
       if @kiq.save
         KiqsMailer.new_order(@kiq).deliver_later
+        KiqsMailer.order_received(@kiq).deliver_later
         render :show
       end
     else
