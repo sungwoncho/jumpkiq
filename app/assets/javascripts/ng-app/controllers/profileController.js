@@ -75,17 +75,26 @@ angular.module('sidekiq')
       });
     };
 
+    $scope.deleteAddress = function () {
+      $scope.address.$delete(function () {
+        flash.success = 'Successfully removed the address.';
+        $scope.address = null;
+      }, function () {
+        flash.error = 'You cannot remove the address while a Kiq is in progress.';
+      });
+    }
+
     $scope.getKiqErrorMessage = function () {
       if (!$scope.user.order.has_style) {
-        return 'Please specify your styles.'
+        return 'Please specify your styles.';
       } else if (!$scope.user.order.has_need) {
-        return 'Please specify your needs.'
+        return 'Please specify your needs.';
       } else if (!$scope.user.order.has_shipping_address) {
-        return 'Please add your shipping address before requesting a kiq.'
+        return 'Please add your shipping address before requesting a kiq.';
       } else if (!$scope.user.order.has_credit_card) {
-        return 'Please add credit card before requesting a kiq.'
+        return 'Please add credit card before requesting a kiq.';
       } else if ($scope.user.order.has_requested_kiq) {
-        return 'You already requested a kiq. Please see My Order page for more information.'
+        return 'You already requested a kiq. Please see My Order page for more information.';
       }
     };
 

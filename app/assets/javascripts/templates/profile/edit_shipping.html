@@ -2,28 +2,41 @@
   <span class="alert-message">{{ flash.message }}</span>
 </div>
 
-<form id='profile-form' class='row' ng-submit='processAddressForm()'>
+
   <div class="col-md-5">
+    <form id='profile-form' class='row' ng-submit='processAddressForm()'>
 
-    <h4>Your shipping address</h4>
+      <h4>Your shipping address</h4>
 
-    <label for="street_address">Address line 1</label>
-    <input type="text" value='street_address' id='street_address' class='form-control' ng-model='address.street_address'>
+      <label for="street_address">Address line 1</label>
+      <input type="text" value='street_address' id='street_address' class='form-control' ng-model='address.street_address'>
 
-    <label for="secondary_address">Address line 2</label>
-    <input type="text" value='secondary_address' id='secondary_address' class='form-control' ng-model='address.secondary_address'>
+      <label for="secondary_address">Address line 2</label>
+      <input type="text" value='secondary_address' id='secondary_address' class='form-control' ng-model='address.secondary_address'>
 
-    <label for="city">City</label>
-    <input type="text" value='city' id='city' class='form-control' ng-model='address.city'>
+      <label for="city">City</label>
+      <input type="text" value='city' id='city' class='form-control' ng-model='address.city'>
 
-    <label for="state">State</label>
-    <input type="text" value='state' id='state' class='form-control' ng-model='address.state'>
+      <label for="state">State</label>
+      <input type="text" value='state' id='state' class='form-control' ng-model='address.state'>
 
-    <label for="postcode">Postcode</label>
-    <input type="number" value='postcode' id='postcode' class='form-control' ng-model='address.postcode'>
+      <label for="postcode">Postcode</label>
+      <input type="number" value='postcode' id='postcode' class='form-control' ng-model='address.postcode'>
 
-    <div class="form-actions">
-      <button type='submit' class='btn btn-success'>Complete</button>
+      <div class="form-actions">
+        <button type='submit' class='btn btn-success'>Complete</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Your current address</h4>
+
+    <div ng-if='address.exists'>
+      {{ address.full_address }}
+
+      <div class="form-actions">
+        <button ng-click='deleteAddress()' class='btn btn-default'>Remove</button>
+      </div>
     </div>
   </div>
-</form>
