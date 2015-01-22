@@ -27,11 +27,15 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    if @customer.delete
+
+    unless current_user.requested_kiqs.present? || current_user.sent_kiqs.present?
+      @customer.delete
       current_user.update_stripe_customer_id(nil)
 
       @customer = nil
       render :show, status: 200
+    else
+      render nothing: true, status: :method_not_allowed
     end
   end
 

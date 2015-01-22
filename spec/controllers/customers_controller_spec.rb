@@ -149,22 +149,48 @@ RSpec.describe CustomersController, :type => :controller do
         before :each do
           @customer = Stripe::Customer.create({card: stripe_helper.generate_card_token})
           user.update(stripe_customer_id: @customer.id)
-
-          delete :destroy, format: :json
         end
 
-        it 'returns 204 status' do
-          expect(response.status).to eq 200
+        context 'if requested kiqs exist' do
+          before :each do
+            create(:kiq, user: user, status: 'requested')
+            delete :destroy, format: :json
+          end
+
+          it 'returns method not allowed status' do
+            expect(response.status).to eq 405
+          end
         end
 
-        it 'deletes the customer' do
-          customer = Stripe::Customer.retrieve(@customer.id)
-          expect(customer.deleted).to eq true
+        context 'if sent kiqs exist' do
+          before :each do
+            create(:kiq, user: user, status: 'sent')
+            delete :destroy, format: :json
+          end
+
+          it 'returns method not allowed status' do
+            expect(response.status).to eq 405
+          end
         end
 
-        it "sets the user's stripe_customer_id to nil" do
-          user.reload
-          expect(user.stripe_customer_id).to eq nil
+        context 'if no requested kiq or sent kiq exists' do
+          before :each do
+            delete :destroy, format: :json
+          end
+
+          it 'returns 200 status' do
+            expect(response.status).to eq 200
+          end
+
+          it 'deletes the customer' do
+            customer = Stripe::Customer.retrieve(@customer.id)
+            expect(customer.deleted).to eq true
+          end
+
+          it "sets the user's stripe_customer_id to nil" do
+            user.reload
+            expect(user.stripe_customer_id).to eq nil
+          end
         end
 
       end
