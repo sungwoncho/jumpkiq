@@ -28,6 +28,15 @@
         <li>Classic style: <%= @kiq.user.classic_style %></li>
       </ul>
 
+      <h3>Needs</h3>
+      <ul>
+        <li>Long sleeve: <%= @kiq.user.long_sleeve %> (max budget: <%= @kiq.user.long_sleeve_max_budget %>)</li>
+        <li>Short sleeve: <%= @kiq.user.short_sleeve %> (max budget: <%= @kiq.user.short_sleeve_max_budget %>)</li>
+        <li>Polo shirt: <%= @kiq.user.polo_shirt %> (max budget: <%= @kiq.user.polo_shirt_max_budget %>)</li>
+        <li>Pants: <%= @kiq.user.pants %> (max budget: <%= @kiq.user.pants_max_budget %>)</li>
+        <li>Shorts: <%= @kiq.user.shorts %> (max budget: <%= @kiq.user.shorts_max_budget %>)</li>
+      </ul>
+
       <h3>Contact and address</h3>
       <ul>
         <li>Email: <%= @kiq.user.email %></li>
