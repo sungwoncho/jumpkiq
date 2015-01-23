@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :sent_kiqs, -> { where status: 'sent' }, class_name: 'Kiq'
   has_many :completed_kiqs, -> { where status: 'completed' }, class_name: 'Kiq'
   has_many :cancelled_kiqs, -> { where status: 'cancelled' }, class_name: 'Kiq'
+  has_many :messages
 
   validates_presence_of :height
   validates_presence_of :weight

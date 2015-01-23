@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     delete 'customers' => 'customers#destroy'
 
     resources :kiqs, except: [:new, :edit]
+    resources :messages, only: [:index, :create]
   end
 
   # stylists specific routes

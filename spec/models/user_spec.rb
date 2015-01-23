@@ -14,6 +14,7 @@ RSpec.describe User, :type => :model do
     it { should have_many(:sent_kiqs).conditions(status: 'sent') }
     it { should have_many(:completed_kiqs).conditions(status: 'completed') }
     it { should have_many(:cancelled_kiqs).conditions(status: 'cancelled') }
+    it { should have_many(:messages) }
   end
 
   describe 'validation' do
