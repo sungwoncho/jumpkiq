@@ -7,8 +7,9 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-    
+    @message = current_user.sent_messages.new(message_params)
+    @message.receiver = current_user.stylist
+
     if @message.save
       render nothing: true, status: 200
     else
@@ -22,7 +23,7 @@ class MessagesController < ApplicationController
     end
 
     def mark_all_as_read(messages)
-      messages.each { |m| m.update(is_read: true) }
+      current_user.received_messages.each { |m| m.update(is_read: true) }
     end
 
     def message_params

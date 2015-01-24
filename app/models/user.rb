@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   has_many :sent_kiqs, -> { where status: 'sent' }, class_name: 'Kiq'
   has_many :completed_kiqs, -> { where status: 'completed' }, class_name: 'Kiq'
   has_many :cancelled_kiqs, -> { where status: 'cancelled' }, class_name: 'Kiq'
-  has_many :messages
+  has_many :sent_messages, as: :sender, class_name: 'Message'
+  has_many :received_messages, as: :receiver, class_name: 'Message'
 
   validates_presence_of :height
   validates_presence_of :weight
@@ -42,6 +43,11 @@ class User < ActiveRecord::Base
 
   def ready_to_order?
     has_shipping_address? && has_credit_card? && has_style? && has_need? && requested_kiqs.empty?
+  end
+
+  def messages
+    messages = received_messages + sent_messages
+    messages.sort_by(&:created_at)
   end
 
   protected

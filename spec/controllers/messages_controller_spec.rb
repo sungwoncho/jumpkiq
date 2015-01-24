@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe MessagesController, :type => :controller do
-  let(:user) { create(:user) }
   let(:stylist) { create(:stylist) }
+  let(:user) { create(:user, stylist: stylist) }
 
   before :each do
     sign_in user
@@ -21,23 +21,26 @@ RSpec.describe MessagesController, :type => :controller do
     end
 
     context 'when logged in' do
-      let!(:message_1) { create(:message, user: user) }
-      let!(:message_2) { create(:message, user: user) }
+      let!(:message_1) { create(:message, sender: stylist, receiver: user) }
+      let!(:message_2) { create(:message, sender: stylist, receiver: user) }
+      let!(:message_3) { create(:message, sender: user, receiver: stylist) }
 
       before :each do
         get :index, format: :json
       end
 
       it "assign all user's messages to @messages" do
-        expect(assigns(:messages)).to match_array [message_1, message_2]
+        expect(assigns(:messages)).to match_array [message_1, message_2, message_3]
       end
 
-      it "sets 'is_read' to true for all messages" do
+      it "sets 'is_read' to true for all received messages" do
         message_1.reload
         message_2.reload
+        message_3.reload
 
         expect(message_1.is_read).to be true
         expect(message_2.is_read).to be true
+        expect(message_3.is_read).to be false
       end
     end
   end
@@ -68,6 +71,14 @@ RSpec.describe MessagesController, :type => :controller do
 
         it 'returns 200 status' do
           expect(response.status).to eq 200
+        end
+
+        it 'sets current user as the sender' do
+          expect(Message.last.sender).to eq user
+        end
+
+        it "sets the user's stylist as the receiver" do
+          expect(Message.last.receiver).to eq stylist
         end
       end
 

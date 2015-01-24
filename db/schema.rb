@@ -65,12 +65,14 @@ ActiveRecord::Schema.define(version: 20150123025217) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "stylist_id"
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
     t.text     "body"
-    t.boolean  "is_read",    default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "is_read",       default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "stylists", force: :cascade do |t|

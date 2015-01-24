@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <aside class="col-md-3">
+      <div ng-include="'profile/partial/stylist.html'"></div>
+
+      <a class='btn btn-success' ng-click='requestKiq()'>Request a Kiq</a>
+      <a class='btn btn-default' ui-sref='profile.main'>Back</a>
+    </aside>
+
+    <div class="col-md-9">
+      <div flash-alert active-class="in alert" class="fade text-center">
+        <span class="alert-message">{{ flash.message }}</span>
+      </div>
+
+      <ul>
+        <li ng-repeat='message in messages'>
+          <div class="timestamp">
+            <span ng-hide='message.sender.is_receiver'>You wrote on</span>
+            <span ng-show='message.sender.is_receiver'>{{ user.stylist.firstname }} wrote on</span>
+            <small>{{ message.created_at | date:"MM/dd/yyyy h:mma" }}</small>
+          </div>
+
+          <div class="message-body">
+            <p>{{ message.body }}</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="message-input">
+        <textarea name="message_body" id="message_body" cols="80" rows="5" ng-model='newMessage.body'>
+
+        </textarea>
+        <div class="form-actions">
+          <button ng-click='sendMessage()' class='btn btn-default'>Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

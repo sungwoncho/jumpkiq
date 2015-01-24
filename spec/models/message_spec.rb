@@ -6,8 +6,8 @@ RSpec.describe Message, :type => :model do
   end
 
   describe 'association' do
-    it { should belong_to(:user) }
-    it { should belong_to(:stylist) }
+    it { should belong_to(:sender) }
+    it { should belong_to(:receiver) }
   end
 
   describe 'validation' do

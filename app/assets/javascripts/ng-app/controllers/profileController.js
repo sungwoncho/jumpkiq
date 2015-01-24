@@ -1,24 +1,27 @@
 angular.module('sidekiq')
-  .controller('profileController', ['$scope', 'Users', 'Addresses', 'Customers', 'Kiqs', 'flash', function ($scope, Users, Addresses, Customers, Kiqs, flash) {
+  .controller('profileController', ['$scope', 'Users', 'Addresses', 'Customers', 'Messages', 'Kiqs', 'flash', function ($scope, Users, Addresses, Customers, Messages, Kiqs, flash) {
 
     // Get information on the current user
     Users.get({}, function (user) {
       $scope.user = user;
-    })
+    });
 
     Addresses.get({}, function(address) {
       $scope.address = address;
-    })
+    });
 
     Customers.get().then(function (response) {
       $scope.customer = response.data;
-    })
+    });
+
+    // Messages.get({}, function (messages) {
+    //   $scope.messages = messages;
+    // });
+
+    $scope.newMessage = new Messages();
 
     $scope.kiqs = Kiqs.query();
-
-    // Kiqs.query({}, function (kiqs) {
-    //   $scope.kiqs = kiqs;
-    // })
+    $scope.messages = Messages.query();
 
     $scope.updateUser = function() {
       $scope.user.$update(function() {
@@ -126,6 +129,14 @@ angular.module('sidekiq')
       })
     }
 
+    $scope.sendMessage = function () {
+      $scope.newMessage.$save(function () {
+        $scope.newMessage.created_at = new Date();
+
+        $scope.messages.push($scope.newMessage);
+        $scope.newMessage = new Messages();
+      });
+    };
 
 
   }])

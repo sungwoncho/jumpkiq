@@ -89,6 +89,11 @@ angular
           templateUrl: 'profile/orders.html'
         })
 
+        .state('profile.messages', {
+          url: '/messages',
+          templateUrl: 'profile/messages.html'
+        });
+
 
     $urlRouterProvider.otherwise('/')
 
