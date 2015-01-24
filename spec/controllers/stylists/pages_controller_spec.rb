@@ -22,14 +22,22 @@ RSpec.describe Stylists::PagesController, :type => :controller do
 
     context 'when logged in' do
 
-      let!(:kiq) { create(:kiq, stylist: stylist) }
+      let!(:user_1) { create(:user) }
+      let!(:user_2) { create(:user) }
+      let!(:kiq) { create(:kiq, user: user_1, stylist: stylist) }
 
       before :each do
+        user_1.stylist = stylist
+        user_2.stylist = stylist
         get :dashboard
       end
 
-      it 'assigns all the kiqs to @kiqs' do
-        expect(assigns(:kiqs)).to eq [kiq]
+      it 'assigns the kiq counts to @kiq_count' do
+        expect(assigns(:kiq_count)).to eq 1
+      end
+
+      it 'assigns the user counts to @user_count' do
+        expect(assigns(:user_count)).to eq 2
       end
 
       it 'assigns current stylist to @stylist' do

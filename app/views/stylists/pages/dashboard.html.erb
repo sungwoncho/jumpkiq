@@ -15,10 +15,22 @@
           <h3>Requested Kiqs</h3>
 
           <div>
-            <%= @kiqs.count %>
+            <%= @kiq_count %>
           </div>
 
           <%= link_to 'View', stylists_kiqs_path, class: 'btn btn-success' %>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Assigned Users</h3>
+
+          <div>
+            <%= @user_count %>
+          </div>
+
+          <%= link_to 'View', stylists_users_path, class: 'btn btn-success' %>
         </div>
       </div>
 

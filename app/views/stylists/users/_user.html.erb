@@ -1,0 +1,16 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Last order</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= user.firstname %> <%= user.lastname %></td>
+      <td><%= user.kiqs.last.created_at if user.kiqs.present? %></td>
+      <td><%= link_to 'View', stylists_user_path(user) %></td>
+    </tr>
+  </tbody>
+</table>

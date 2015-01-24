@@ -23,5 +23,7 @@ FactoryGirl.define do
     height 175
     weight 75
     casual_shirt_size 'M'
+
+    association :stylist, factory: :stylist
   end
 end

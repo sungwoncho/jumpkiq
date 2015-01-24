@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <h3>Orders</h3>
+      <ul>
+        <li>Total completed order count: <%= @user.completed_kiqs.count %></li>
+        <li>Last ordered: <%= @user.kiqs.last.created_at if @user.kiqs %></li>
+        <li>Currently has a requested kiq?: <%= @user.requested_kiqs.present? %></li>
+      </ul>
+
+      <h3>User information</h3>
+      <ul>
+        <li>Name: <%= @user.firstname %> <%= @user.lastname %></li>
+        <li>Height (cm): <%= @user.height %></li>
+        <li>Weight (kg): <%= @user.weight %></li>
+        <li>Casual shirt size: <%= @user.casual_shirt_size %></li>
+        <li>Waist (cm): <%= @user.waist %></li>
+        <li>Inseam (cm): <%= @user.inseam %></li>
+      </ul>
+
+      <h3>Style preferences</h3>
+      <ul>
+        <li>Smart style: <%= @user.smart_style %></li>
+        <li>Casual style: <%= @user.casual_style %></li>
+        <li>Hipster style: <%= @user.hipster_style %></li>
+        <li>Classic style: <%= @user.classic_style %></li>
+      </ul>
+
+      <h3>Contact and address</h3>
+      <ul>
+        <li>Email: <%= @user.email %></li>
+        <li>Address: <%= @user.address.full_address if @user.address %></li>
+      </ul>
+
+      <%= link_to 'Back', stylists_kiqs_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

@@ -40,6 +40,7 @@ Rails.application.routes.draw do
         resources :charges, only: [:create, :destroy]
       end
     end
+    resources :users, only: [:index, :show]
   end
 
   # angular routes
