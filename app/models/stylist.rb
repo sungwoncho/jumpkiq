@@ -11,6 +11,11 @@ class Stylist < ActiveRecord::Base
   has_many :pending_kiqs, -> { where status: 'pending' }, class_name: 'Kiq'
   has_many :completed_kiqs, -> { where status: 'completed' }, class_name: 'Kiq'
   has_many :cancelled_kiqs, -> { where status: 'cancelled' }, class_name: 'Kiq'
-  has_many :messages, as: :sender
-  has_many :messages, as: :receiver
+  has_many :sent_messages, as: :sender, class_name: 'Message'
+  has_many :received_messages, as: :receiver, class_name: 'Message'
+
+  def messages
+    messages = received_messages + sent_messages
+    messages.sort_by(&:created_at)
+  end
 end
