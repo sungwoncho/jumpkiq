@@ -1,5 +1,5 @@
 angular
-  .module('sidekiq', [
+  .module('jumpkiq', [
     'ngAnimate',
     'ngResource',
     'ui.router',

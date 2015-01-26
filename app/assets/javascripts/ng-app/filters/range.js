@@ -1,4 +1,4 @@
-angular.module('sidekiq')
+angular.module('jumpkiq')
   .filter('range', function() {
     return function (input, min, max) {
       min = parseInt(min);

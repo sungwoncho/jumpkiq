@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <aside class="col-md-3">
+      <h3>Messages</h3>
+    </aside>
+
+    <div class="col-md-9">
+      <%= render @messages %>
+
+      <div class="message-input">
+        <%= form_for :message, url: stylists_messages_path(@user) do |f| %>
+          <%= f.text_area :body, class: 'form-control' %>
+          <%= f.submit :Send, class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

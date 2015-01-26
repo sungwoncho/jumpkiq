@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('sidekiq')
+angular.module('jumpkiq')
   .factory('Customers', ['$http', function ($http) {
     var api = {};
 

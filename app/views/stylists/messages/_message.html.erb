@@ -1,0 +1,18 @@
+<ul>
+  <li>
+    <div class="timestamp">
+      <% if message.sender_type == 'Stylist' %>
+        You wrote on
+      <% else %>
+        <%= message.sender.firstname %> <%= message.sender.lastname %> wrote on
+      <% end %>
+      <small><%= message.created_at %></small>
+    </div>
+
+    <div class='message-body'>
+      <%= message.body %>
+    </div>
+
+
+  </li>
+</ul>

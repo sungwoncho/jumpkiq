@@ -1,4 +1,4 @@
-angular.module('sidekiq')
+angular.module('jumpkiq')
   .controller('signupController', ['$scope', '$window', '$timeout', 'Auth', '$location', 'flash', function($scope, $window, $timeout, Auth, $location, flash) {
     $scope.formData = {};
 

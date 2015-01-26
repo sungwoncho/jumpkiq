@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('sidekiq')
+angular.module('jumpkiq')
   .factory('Users', ['$resource', function($resource) {
     return $resource('api/users/', {format: 'json'}, {
       update: {

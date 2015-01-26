@@ -1,4 +1,4 @@
-angular.module('sidekiq')
+angular.module('jumpkiq')
   .controller('profileController', ['$scope', 'Users', 'Addresses', 'Customers', 'Kiqs', 'flash', function ($scope, Users, Addresses, Customers, Kiqs, flash) {
 
     // Get information on the current user
