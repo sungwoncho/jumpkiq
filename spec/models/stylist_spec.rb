@@ -10,8 +10,21 @@ RSpec.describe Stylist, :type => :model do
     it { should have_many(:users) }
     it { should have_many(:kiqs) }
     it { should have_many(:requested_kiqs).conditions(status: 'requested') }
-    it { should have_many(:pending_kiqs).conditions(status: 'pending') }
+    it { should have_many(:sent_kiqs).conditions(status: 'sent') }
     it { should have_many(:completed_kiqs).conditions(status: 'completed') }
     it { should have_many(:cancelled_kiqs).conditions(status: 'cancelled') }
+  end
+
+  describe 'instance methods' do
+    let(:stylist) { create(:stylist, firstname: 'Jane', lastname: 'Kim', email: 'jkim@example.com') }
+
+    describe '#name' do
+      specify { expect(stylist.name).to eq 'Jane Kim' }
+    end
+
+    describe '#mailboxer_email' do
+      skip
+      # specify { expect(stylist.mailboxer_email).to eq 'jkim@example.com' }
+    end
   end
 end

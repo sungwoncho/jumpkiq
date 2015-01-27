@@ -22,7 +22,7 @@ RSpec.describe User, :type => :model do
     it { should validate_presence_of(:casual_shirt_size) }
   end
 
-  let(:user) { create(:user) }
+  let(:user) { create(:user, firstname: 'Alex', lastname: 'Gus', email: 'agus@example.com') }
   let!(:stylist) { create(:stylist) }
 
   describe 'callbacks' do
@@ -105,6 +105,15 @@ RSpec.describe User, :type => :model do
 
         specify { expect(user).not_to be_ready_to_order }
       end
+    end
+
+    describe '#name' do
+      specify { expect(user.name).to eq 'Alex Gus' }
+    end
+
+    describe '#mailboxer_email' do
+      skip
+      # specify { expect(user.mailboxer_email).to eq 'agus@example.com' }
     end
   end
 end

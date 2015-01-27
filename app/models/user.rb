@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   after_create :assign_stylist
+  acts_as_messageable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -41,6 +42,14 @@ class User < ActiveRecord::Base
 
   def ready_to_order?
     has_shipping_address? && has_credit_card? && has_style? && has_need? && requested_kiqs.empty?
+  end
+
+  def name
+    "#{firstname} #{lastname}"
+  end
+
+  def mailboxer_email(object)
+    email
   end
 
   protected
