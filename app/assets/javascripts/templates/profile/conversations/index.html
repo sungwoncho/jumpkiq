@@ -3,7 +3,7 @@
     <aside class="col-md-3">
       <div ng-include="'profile/partial/stylist.html'"></div>
 
-      <a class='btn btn-success' ng-click='requestKiq()'>Request a Kiq</a>
+      <a class='btn btn-success' ng-controller='kiqsController' ng-click='requestKiq()'>Request a Kiq</a>
       <a class='btn btn-default' ui-sref='profile.main'>Back</a>
     </aside>
 
