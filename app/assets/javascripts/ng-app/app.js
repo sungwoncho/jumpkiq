@@ -89,11 +89,23 @@ angular
           templateUrl: 'profile/orders.html'
         })
 
+        .state('profile.conversations', {
+          url: '/conversations',
+          templateUrl: 'profile/conversations/index.html'
+        })
+
+        .state('profile.viewConversation', {
+          url: '/conversations/:id',
+          templateUrl: 'profile/conversations/show.html',
+          controller: 'conversationController'
+        })
+
 
     $urlRouterProvider.otherwise('/')
 
     $locationProvider.html5Mode(true);
 
     // Read from meta tag and set the stripe public key
+    // Comment this out to work offline
     Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
   }]);

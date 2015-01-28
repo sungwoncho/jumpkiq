@@ -33,6 +33,10 @@ RSpec.describe MessagesController, :type => :controller do
           post :create, format: :json, subject: 'whatup', body: 'hi'
         }.to change{ jane.mailbox.conversations.count }.by(1)
       end
+
+      # it 'returns 201 status' do
+      #   expect(response.status).to eq 201
+      # end
     end
   end
 end

@@ -3,6 +3,8 @@ class MessagesController < ApplicationController
 
   def create
     @receipt = current_user.send_message(current_user.stylist, params[:body], params[:subject])
-    render nothing: true
+    if @receipt.errors.blank? && @receipt.valid?
+      render nothing: true, status: 201
+    end
   end
 end

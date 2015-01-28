@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     delete 'customers' => 'customers#destroy'
 
     resources :kiqs, except: [:new, :edit]
-    resources :conversations, only: [:index, :show]
+    resources :conversations, only: [:index, :show, :update]
     resources :messages, only: :create
   end
 

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <aside class="col-md-3">
+      <div ng-include="'profile/partial/stylist.html'"></div>
+
+      <a class='btn btn-success' ng-click='requestKiq()'>Request a Kiq</a>
+      <a class='btn btn-default' ui-sref='profile.main'>Back</a>
+    </aside>
+
+    <div class="col-md-9" ng-controller='conversationsController'>
+      <div flash-alert active-class="in alert" class="fade text-center">
+        <span class="alert-message">{{ flash.message }}</span>
+      </div>
+
+      <ul>
+        <li ng-repeat='conversation in conversations'>
+          <a ui-sref='profile.viewConversation({id: conversation.id})'>{{ conversation.subject }}</a>
+          <small>sent at {{ conversation.created_at | date: 'dd/MM/yyyy h:mma' }}</small>
+        </li>
+      </ul>
+
+      <div>
+        <form ng-controller='messagesController' ng-submit='sendMessage()'>
+          <input type="text" ng-model='message.subject' class='form-control'>
+          <textarea name="body" id="body" cols="30" rows="10" ng-model='message.body' class='form-control'></textarea>
+
+          <button type='submit' class='btn btn-info'>Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
