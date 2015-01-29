@@ -12,20 +12,30 @@
         <span class="alert-message">{{ flash.message }}</span>
       </div>
 
-      <ul>
+      <ul class='conversation-list list-unstyled'>
         <li ng-repeat='conversation in conversations'>
-          <a ui-sref='profile.viewConversation({id: conversation.id})'>{{ conversation.subject }}</a>
-          <small>sent at {{ conversation.created_at | date: 'dd/MM/yyyy h:mma' }}</small>
+          <a class='conversation-title' ui-sref='profile.viewConversation({id: conversation.id})'>{{ conversation.subject }}</a>
+          <small class='text-muted'>{{ conversation.created_at | date: 'dd/MM/yyyy h:mma' }}</small>
         </li>
       </ul>
 
-      <div>
-        <form ng-controller='messagesController' ng-submit='sendMessage()'>
-          <input type="text" ng-model='message.subject' class='form-control'>
-          <textarea name="body" id="body" cols="30" rows="10" ng-model='message.body' class='form-control'></textarea>
+      <div class='row'>
+        <div class="col-md-8">
+          <form ng-controller='messagesController' ng-submit='sendMessage()'>
 
-          <button type='submit' class='btn btn-info'>Send</button>
-        </form>
+            <h3>Begin a new conversation with your stylist</h3>
+
+            <label for="subject">Subject</label>
+            <input type="text" id='subject' ng-model='message.subject' class='form-control'>
+
+            <label for="body">Message</label>
+            <textarea name="body" id="body" cols="30" rows="8" ng-model='message.body' class='form-control'></textarea>
+
+            <div class="form-actions">
+              <button type='submit' class='btn btn-info'>Send</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
