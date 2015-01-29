@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AddressesController, :type => :controller do
+RSpec.describe API::AddressesController, :type => :controller do
   render_views
 
   let(:json) { JSON.parse(response.body, symbolize_names: true) }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ConversationsController, :type => :controller do
+RSpec.describe API::ConversationsController, :type => :controller do
   let(:jane) { create(:user, firstname: 'Jane') }
   let(:alex) { create(:user, lastname: 'Alex') }
 

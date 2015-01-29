@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, :type => :controller do
+RSpec.describe API::UsersController, :type => :controller do
   render_views
 
   let(:json) { JSON.parse(response.body, symbolize_names: true) }

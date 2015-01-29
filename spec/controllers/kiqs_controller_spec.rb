@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe KiqsController, :type => :controller do
+RSpec.describe API::KiqsController, :type => :controller do
   render_views
 
   let(:json) { JSON.parse(response.body, symbolize_names: true) }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MessagesController, :type => :controller do
+RSpec.describe API::MessagesController, :type => :controller do
   let(:jane) { create(:stylist, firstname: 'Jane') }
   let(:alex) { create(:user, lastname: 'Alex') }
 

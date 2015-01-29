@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
 
   # API routes
-  scope 'api', defaults: { format: :json } do
+  namespace :api, defaults: { format: :json } do
     get 'users' => 'users#show'
     put 'users' => 'users#update'
 

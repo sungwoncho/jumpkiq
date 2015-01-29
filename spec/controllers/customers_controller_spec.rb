@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'stripe_mock'
 
-RSpec.describe CustomersController, :type => :controller do
+RSpec.describe API::CustomersController, :type => :controller do
   render_views
 
   let(:json) { JSON.parse(response.body, symbolize_names: true) }
