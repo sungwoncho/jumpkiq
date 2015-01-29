@@ -1,5 +1,5 @@
 angular.module('jumpkiq')
-  .controller('profileController', ['$scope', 'Users', 'Addresses', 'Customers', 'Kiqs', 'flash', function ($scope, Users, Addresses, Customers, Kiqs, flash) {
+  .controller('profileController', ['$scope', 'Users', 'flash', function ($scope, Users, flash) {
 
     Users.get({}, function (user) {
       $scope.user = user;
