@@ -14,18 +14,9 @@ Rails.application.routes.draw do
 
   # API routes
   namespace :api, defaults: { format: :json } do
-    get 'users' => 'users#show'
-    put 'users' => 'users#update'
-
-    get 'addresses' => 'addresses#show'
-    post 'addresses' => 'addresses#create'
-    put 'addresses' => 'addresses#update'
-    delete 'addresses' => 'addresses#destroy'
-
-    get 'customers' => 'customers#show'
-    post 'customers' => 'customers#create'
-    put 'customers' => 'customers#update'
-    delete 'customers' => 'customers#destroy'
+    resource :users, only: [:show, :update]
+    resource :addresses, only: [:show, :create, :update, :destroy]
+    resource :customers, only: [:show, :create, :update, :destroy]
 
     resources :kiqs, except: [:new, :edit]
     resources :conversations, only: [:index, :show, :update]
