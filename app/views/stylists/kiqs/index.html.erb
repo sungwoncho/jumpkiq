@@ -9,17 +9,34 @@
     <div class="col-md-3">
 
       <ul class='nav'>
-        <li><%= link_to 'All', stylists_kiqs_path %></li>
-        <li><%= link_to 'Requested', stylists_kiqs_path(status: 'requested') %></li>
-        <li><%= link_to 'Sent', stylists_kiqs_path(status: 'pending') %></li>
-        <li><%= link_to 'Completed', stylists_kiqs_path(status: 'completed') %></li>
-        <li><%= link_to 'Cancelled', stylists_kiqs_path(status: 'cancelled') %></li>
+        <%= kiq_nav 'All', stylists_kiqs_path %>
+        <%= kiq_nav 'Requested', stylists_kiqs_path(status: 'requested'), 'requested' %>
+        <%= kiq_nav 'Sent', stylists_kiqs_path(status: 'sent'), 'sent' %>
+        <%= kiq_nav 'Completed', stylists_kiqs_path(status: 'completed'), 'completed' %>
+        <%= kiq_nav 'Cancelled', stylists_kiqs_path(status: 'cancelled'), 'cancelled' %>
       </ul>
 
     </div>
 
     <div class="col-md-9 item-container">
-      <%= render @kiqs %>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Kiq Number</th>
+            <th>Order Date</th>
+            <th>User name</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @kiqs %>
+        </tbody>
+      </table>
+
+      <div>
+        <%= will_paginate @kiqs, renderer: BootstrapPagination::Rails %>
+      </div>
     </div>
   </div>
 

@@ -22,10 +22,10 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
 
     context 'when logged in' do
 
-      let!(:kiq_1) { create(:kiq, stylist: stylist, status: 'requested') }
-      let!(:kiq_2) { create(:kiq, stylist: stylist, status: 'sent') }
-      let!(:kiq_3) { create(:kiq, stylist: stylist, status: 'completed') }
-      let!(:kiq_4) { create(:kiq, stylist: stylist, status: 'cancelled') }
+      let!(:kiq_1) { create(:kiq, stylist: stylist, status: 'requested', created_at: 5.days.ago, updated_at: 5.days.ago) }
+      let!(:kiq_2) { create(:kiq, stylist: stylist, status: 'sent', created_at: 3.days.ago, updated_at: 3.days.ago) }
+      let!(:kiq_3) { create(:kiq, stylist: stylist, status: 'completed', created_at: 4.days.ago, updated_at: 4.days.ago) }
+      let!(:kiq_4) { create(:kiq, stylist: stylist, status: 'cancelled', created_at: 2.days.ago, updated_at: 2.days.ago) }
       let!(:kiq_5) { create(:kiq, stylist: stylist_2) }
 
       context 'with no params' do
@@ -35,6 +35,10 @@ RSpec.describe Stylists::KiqsController, :type => :controller do
 
         it "assigns all of stylist's kiqs to @kiqs" do
           expect(assigns(:kiqs)).to match_array [kiq_1, kiq_2, kiq_3, kiq_4]
+        end
+
+        it 'orders the kiqs by created_at in descending order' do
+          expect(assigns(:kiqs)).to eq [kiq_4, kiq_2, kiq_3, kiq_1]
         end
       end
 

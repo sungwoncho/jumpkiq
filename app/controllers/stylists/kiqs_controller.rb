@@ -11,6 +11,8 @@ class Stylists::KiqsController < ApplicationController
     else
       @kiqs = current_stylist.kiqs
     end
+
+    @kiqs = @kiqs.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   def show

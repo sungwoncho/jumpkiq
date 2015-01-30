@@ -1,32 +1,21 @@
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Kiq Number</th>
-      <th>Order Date</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= kiq.id %></td>
-      <td><%= kiq.created_at %></td>
-      <td><%= kiq.status %></td>
-      <td>
-        <% if kiq.status == 'sent' %>
-          <%= form_tag stylists_charges_path(id: kiq.id) do %>
-            <%= text_field_tag :amount %>
-            <%= submit_tag 'Charge', data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        <% elsif kiq.status == 'requested' %>
-          <%= simple_form_for kiq, url: stylists_kiq_path(kiq) do |f| %>
-            <%= f.hidden_field :status, value: 'sent' %>
-            <%= f.submit 'Sent', class: 'btn btn-sm btn-default', data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        <% end %>
+<tr>
+  <td><%= kiq.id %></td>
+  <td><%= kiq.created_at %></td>
+  <td><%= kiq.user.name %></td>
+  <td><%= kiq.status %></td>
+  <td>
+    <% if kiq.status == 'sent' %>
+      <%= form_tag stylists_charges_path(id: kiq.id) do %>
+        <%= text_field_tag :amount %>
+        <%= submit_tag 'Charge', data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    <% elsif kiq.status == 'requested' %>
+      <%= simple_form_for kiq, url: stylists_kiq_path(kiq) do |f| %>
+        <%= f.hidden_field :status, value: 'sent' %>
+        <%= f.submit 'Mark as sent', class: 'btn btn-sm btn-default', data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    <% end %>
 
-        <%= link_to 'View', stylists_kiq_path(kiq), class: 'btn btn-info' %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <%= link_to 'View details', stylists_kiq_path(kiq), class: 'btn btn-info' %>
+  </td>
+</tr>
