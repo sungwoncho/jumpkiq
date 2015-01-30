@@ -1,0 +1,2 @@
+module Stylists::ConversationsHelper
+end

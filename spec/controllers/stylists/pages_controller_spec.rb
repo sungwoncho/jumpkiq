@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Stylists::PagesController, :type => :controller do
   let(:stylist) { create(:stylist) }
+  let(:user) { create(:user) }
 
   before :each do
     sign_in stylist
@@ -25,11 +26,16 @@ RSpec.describe Stylists::PagesController, :type => :controller do
       let!(:kiq) { create(:kiq, stylist: stylist) }
 
       before :each do
+        stylist.send_message(user, 'hi', 'how are you?')
         get :dashboard
       end
 
-      it 'assigns all the kiqs to @kiqs' do
-        expect(assigns(:kiqs)).to eq [kiq]
+      it 'assigns kiq count to @kiq_count' do
+        expect(assigns(:kiq_count)).to eq 1
+      end
+
+      it 'assigns conversation count to @conversation_count' do
+        expect(assigns(:conversation_count)).to eq 1
       end
 
       it 'assigns current stylist to @stylist' do

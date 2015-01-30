@@ -32,6 +32,8 @@ Rails.application.routes.draw do
         resources :charges, only: [:create, :destroy]
       end
     end
+    resources :conversations, only: [:index, :show, :update]
+    resources :messages, only: [:new, :create]
   end
 
   # angular routes

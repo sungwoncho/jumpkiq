@@ -1,0 +1,10 @@
+<%= div_for(conversation, class: "#{ 'unread' if conversation.is_unread?(current_stylist) }") do %>
+
+  <h4 class="conversation-title"><%= link_to (truncate(conversation.subject, length: 55)), stylists_conversation_path(id: conversation.id) %></h4>
+  <%= raw(truncate(strip_tags(conversation.last_message.body), length: 50)) %>
+
+  <div>
+    <small class="text-muted"><%= time_ago_in_words(conversation.updated_at) %> ago</small>
+  </div>
+
+<% end %>

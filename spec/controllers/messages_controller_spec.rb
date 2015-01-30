@@ -6,12 +6,6 @@ RSpec.describe API::MessagesController, :type => :controller do
 
   before :each do
     alex.stylist = jane
-
-    jane.send_message(alex, 'hello', 'how are you')
-    alex.send_message(jane, 'blue sky', 'deep ocean')
-    @conversation_1 = Mailboxer::Conversation.first
-    @conversation_2 = Mailboxer::Conversation.second
-
     sign_in alex
   end
 

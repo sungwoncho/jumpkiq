@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe API::ConversationsController, :type => :controller do
+RSpec.describe Stylists::ConversationsController, :type => :controller do
   let(:jane) { create(:stylist, firstname: 'Jane') }
   let(:alex) { create(:user, lastname: 'Alex') }
 
@@ -10,24 +10,24 @@ RSpec.describe API::ConversationsController, :type => :controller do
     @conversation_1 = Mailboxer::Conversation.first
     @conversation_2 = Mailboxer::Conversation.second
 
-    sign_in alex
+    sign_in jane
   end
 
   describe 'GET index' do
     context 'when not logged in' do
       before :each do
-        sign_out alex
-        get :index, format: :json
+        sign_out jane
+        get :index
       end
 
-      it 'returns 401' do
-        expect(response.status).to eq 401
+      it 'requires login' do
+        expect(response.status).to require_stylist_login
       end
     end
 
     context 'when logged in' do
       before :each do
-        get :index, format: :json
+        get :index
       end
 
       it 'assigns the conversations in the inbox to @conversations' do
@@ -39,22 +39,23 @@ RSpec.describe API::ConversationsController, :type => :controller do
   describe 'GET show' do
     context 'when not logged in' do
       before :each do
-        sign_out alex
-        get :show, format: :json, id: @conversation_1
+        sign_out jane
+        get :show, id: @conversation_1
       end
-      it 'returns 401' do
-        expect(response.status).to eq 401
+
+      it 'requires login' do
+        expect(response.status).to require_stylist_login
       end
     end
 
     context 'when logged in' do
       before :each do
-        @conversation_receipt = alex.mailbox.receipts_for(@conversation_1).not_trash
-        get :show, format: :json, id: @conversation_1
+        @conversation_receipt = jane.mailbox.receipts_for(@conversation_2).not_trash
+        get :show, id: @conversation_2
       end
 
       it 'assigns the requested conversation to @conversation' do
-        expect(assigns(:conversation)).to eq @conversation_1
+        expect(assigns(:conversation)).to eq @conversation_2
       end
 
       it 'assigns the receipts of the conversation to @receipt' do
@@ -73,37 +74,38 @@ RSpec.describe API::ConversationsController, :type => :controller do
   describe 'PUT update' do
     context 'when not logged in' do
       before :each do
-        sign_out alex
-        put :update, format: :json, id: @conversation_1
+        sign_out jane
+        put :update, id: @conversation_2
       end
 
-      it 'returns 401 status' do
-        expect(response.status).to eq 401
+      it 'requires login' do
+        expect(response.status).to require_stylist_login
       end
     end
 
     context 'when logged in' do
       context 'with param[:reply]' do
         before :each do
-          put :update, format: :json, id: @conversation_1, reply: true, body: 'doing good'
+          put :update, id: @conversation_2, reply: true, body: 'doing good'
         end
 
         it 'creates a message for the conversation' do
-          expect(@conversation_1.messages.count).to eq 2
+          expect(@conversation_2.messages.count).to eq 2
         end
 
-        it 'sends the message from the user' do
-          expect(@conversation_1.messages.last.sender).to eq alex
+        it 'sends the message from the stylist' do
+          expect(@conversation_2.messages.last.sender).to eq jane
         end
 
-        it 'sends the message to stylist' do
-          expect(jane.mailbox.conversations.first.messages.count).to eq 2
+        it 'sends the message to user' do
+          expect(alex.mailbox.conversations.first.messages.count).to eq 2
         end
 
-        it 'returns 200 status' do
-          expect(response.status).to eq 200
+        it 'redirects to show' do
+          expect(response).to redirect_to action: :show
         end
       end
     end
   end
+
 end

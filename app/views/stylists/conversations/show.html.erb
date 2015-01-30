@@ -1,0 +1,22 @@
+<h1><%= @conversation.subject %></h1>
+
+<div>
+  <i>In this conversation:</i><br>
+    <% @conversation.recipients.each do |recp| %>
+      <%= recp.name %>
+    <% end %>
+</div>
+
+<div>
+  <% @receipts.each do |receipt| %>
+    <%= render partial: 'stylists/messages/message' , locals: { message: receipt.message } %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_tag stylists_conversation_path(@conversation), method: :put do %>
+    <%= text_area_tag :body, nil, rows: 6, cols: 53, class: "form-control" %>
+    <br>
+    <%= submit_tag "Reply", name: :reply, class: "btn btn-primary" %>
+  <% end %>
+</div>
