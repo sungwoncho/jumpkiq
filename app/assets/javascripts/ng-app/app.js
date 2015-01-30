@@ -107,5 +107,5 @@ angular
 
     // Read from meta tag and set the stripe public key
     // Comment this out to work offline
-    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
+    // Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
   }]);

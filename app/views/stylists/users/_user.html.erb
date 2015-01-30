@@ -5,6 +5,7 @@
   <td><%= user.created_at %></td>
   <td><%= user.last_active_at %></td>
   <td>
-    <%= link_to 'View', stylists_user_path(user) %>
+    <%= link_to 'View', stylists_user_path(user) %><br>
+    <%= link_to 'New message', new_stylists_user_message_path(user) %>
   </td>
 </tr>

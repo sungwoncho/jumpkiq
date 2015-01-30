@@ -1,1 +1,23 @@
-<%= render partial: 'conversation', collection: @conversations %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'shared/flash' %>
+    </div>
+
+    <h3>Conversations</h3>
+
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-9 item-container">
+
+      <%= render partial: 'conversation', collection: @conversations %>
+
+      <div>
+        <%= will_paginate @conversations, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+
+</div>

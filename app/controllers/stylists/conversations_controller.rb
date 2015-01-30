@@ -4,7 +4,7 @@ class Stylists::ConversationsController < ApplicationController
   before_action :set_conversation, except: :index
 
   def index
-    @conversations = @mailbox.conversations
+    @conversations = @mailbox.conversations.paginate(page: params[:page], per_page: 10)
   end
 
   def show

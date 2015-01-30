@@ -1,22 +1,44 @@
-<h1><%= @conversation.subject %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'shared/flash' %>
+    </div>
 
-<div>
-  <i>In this conversation:</i><br>
-    <% @conversation.recipients.each do |recp| %>
-      <%= recp.name %>
-    <% end %>
-</div>
+    <h3>Conversations</h3>
 
-<div>
-  <% @receipts.each do |receipt| %>
-    <%= render partial: 'stylists/messages/message' , locals: { message: receipt.message } %>
-  <% end %>
-</div>
+    <div class="col-md-3">
 
-<div>
-  <%= form_tag stylists_conversation_path(@conversation), method: :put do %>
-    <%= text_area_tag :body, nil, rows: 6, cols: 53, class: "form-control" %>
-    <br>
-    <%= submit_tag "Reply", name: :reply, class: "btn btn-primary" %>
-  <% end %>
+    </div>
+
+    <div class="col-md-9 item-container">
+
+      <h1><%= @conversation.subject %></h1>
+
+      <div>
+        <i>In this conversation:</i><br>
+        <% @conversation.recipients.each do |recp| %>
+        <%= recp.name %><br>
+        <% end %>
+      </div>
+
+      <div>
+        <% @receipts.each do |receipt| %>
+        <%= render partial: 'stylists/messages/message' , locals: { message: receipt.message } %>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form_tag stylists_conversation_path(@conversation), method: :put do %>
+          <%= text_area_tag :body, nil, rows: 6, cols: 53, class: "form-control" %>
+          <br>
+          <%= submit_tag "Reply", name: :reply, class: "btn btn-primary" %>
+        <% end %>
+        <div class="form-actions">
+          <%= link_to 'Back', stylists_conversations_path, class: 'btn btn-default' %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </div>

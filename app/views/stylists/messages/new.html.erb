@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'shared/flash' %>
+    </div>
+
+    <h3>New message to <%= @user.name %></h3>
+
+    <div class="col-md-12 item-container">
+
+      <div>
+
+        <%= form_for :message, { url: stylists_user_messages_path } do %>
+          <%= text_field_tag :subject, nil, class: 'form-control', placeholder: 'Subject' %>
+          <%= text_area_tag :body, nil, rows: 6, cols: 53, class: "form-control", placeholder: 'Message' %>
+          <br>
+          <%= submit_tag "Send", name: :reply, class: "btn btn-primary" %>
+        <% end %>
+
+        <div class="form-actions">
+          <%= link_to 'Back', stylists_conversations_path, class: 'btn btn-default' %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

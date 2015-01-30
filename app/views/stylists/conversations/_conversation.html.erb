@@ -1,6 +1,15 @@
+<%
+# Get client name (Refactor this into model)
+client = conversation.recipients.map(&:name).select { |e| e != current_stylist.name }[0]
+%>
+
 <%= div_for(conversation, class: "#{ 'unread' if conversation.is_unread?(current_stylist) }") do %>
 
-  <h4 class="conversation-title"><%= link_to (truncate(conversation.subject, length: 55)), stylists_conversation_path(id: conversation.id) %></h4>
+  <h4 class="conversation-title">
+    <%= link_to (truncate(conversation.subject, length: 55)), stylists_conversation_path(id: conversation.id) %>
+    <small><%= client %></small>
+  </h4>
+
   <%= raw(truncate(strip_tags(conversation.last_message.body), length: 50)) %>
 
   <div>
