@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     end
     resources :conversations, only: [:index, :show, :update]
     resources :messages, only: [:new, :create]
+    resources :users, only: [:index, :show], path: 'clients'
   end
 
   # angular routes

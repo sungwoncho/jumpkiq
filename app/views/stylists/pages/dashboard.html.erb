@@ -12,10 +12,11 @@
 
       <div class="panel panel-default">
         <div class="panel-body">
-          <h3>Requested Kiqs</h3>
+          <h3>Kiqs</h3>
 
           <div>
-            <h4><%= @kiq_count %></h4>
+            <h4>Total: <%= pluralize @kiqs.count, 'kiq' %></h4>
+            <h4>Requested: <%= pluralize @requested_kiqs.count, 'kiq' %></h4>
           </div>
 
           <%= link_to 'View', stylists_kiqs_path, class: 'btn btn-success' %>
@@ -24,10 +25,22 @@
 
       <div class="panel panel-default">
         <div class="panel-body">
+          <h3>Clients</h3>
+
+          <div>
+            <h4><%= pluralize @client_count, 'client' %></h4>
+          </div>
+
+          <%= link_to 'View', stylists_users_path, class: 'btn btn-success' %>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
           <h3>Conversations</h3>
 
           <div>
-            <h4><%= @conversation_count %></h4>
+            <h4><%= pluralize @conversation_count, 'conversation' %></h4>
           </div>
 
           <%= link_to 'View', stylists_conversations_path, class: 'btn btn-success' %>

@@ -1,0 +1,10 @@
+<tr>
+  <td><%= user.id %></td>
+  <td><%= user.name %></td>
+  <td><%= user.height %> / <%= user.weight %></td>
+  <td><%= user.created_at %></td>
+  <td><%= user.last_active_at %></td>
+  <td>
+    <%= link_to 'View', stylists_user_path(user) %>
+  </td>
+</tr>

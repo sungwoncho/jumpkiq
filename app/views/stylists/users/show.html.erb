@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <h3>User information</h3>
+      <ul>
+        <li>Name: <%= @user.firstname %> <%= @user.lastname %></li>
+        <li>Height (cm): <%= @user.height %></li>
+        <li>Weight (kg): <%= @user.weight %></li>
+        <li>Casual shirt size: <%= @user.casual_shirt_size %></li>
+        <li>Waist (cm): <%= @user.waist %></li>
+        <li>Inseam (cm): <%= @user.inseam %></li>
+      </ul>
+
+      <h3>Style preferences</h3>
+      <ul>
+        <li>Smart style: <%= @user.smart_style %></li>
+        <li>Casual style: <%= @user.casual_style %></li>
+        <li>Hipster style: <%= @user.hipster_style %></li>
+        <li>Classic style: <%= @user.classic_style %></li>
+      </ul>
+
+      <h3>Needs</h3>
+      <ul>
+        <li>Long sleeve: <%= @user.long_sleeve %> (max budget: <%= @user.long_sleeve_max_budget %>)</li>
+        <li>Short sleeve: <%= @user.short_sleeve %> (max budget: <%= @user.short_sleeve_max_budget %>)</li>
+        <li>Polo shirt: <%= @user.polo_shirt %> (max budget: <%= @user.polo_shirt_max_budget %>)</li>
+        <li>Pants: <%= @user.pants %> (max budget: <%= @user.pants_max_budget %>)</li>
+        <li>Shorts: <%= @user.shorts %> (max budget: <%= @user.shorts_max_budget %>)</li>
+      </ul>
+
+      <h3>Orders</h3>
+      <ul>
+        <li>Total orders: <%= @user.kiqs.count %></li>
+        <li>Currently requested a Kiq? : <%= @user.requested_kiqs.present? %></li>
+        <li>Last ordered at: <%= @user.kiqs.last.created_at %></li>
+        <li>Last active at: <%= @user.last_active_at %></li>
+      </ul>
+
+      <h3>Contact and address</h3>
+      <ul>
+        <li>Email: <%= @user.email %></li>
+        <li>Address: <%= @user.address.full_address if @user.address %></li>
+      </ul>
+
+      <%= link_to 'Back', stylists_users_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

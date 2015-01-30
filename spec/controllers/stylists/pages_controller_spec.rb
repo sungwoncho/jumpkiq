@@ -23,19 +23,30 @@ RSpec.describe Stylists::PagesController, :type => :controller do
 
     context 'when logged in' do
 
-      let!(:kiq) { create(:kiq, stylist: stylist) }
+      let!(:kiq) { create(:kiq, stylist: stylist, status: 'requested') }
 
       before :each do
         stylist.send_message(user, 'hi', 'how are you?')
         get :dashboard
       end
 
-      it 'assigns kiq count to @kiq_count' do
-        expect(assigns(:kiq_count)).to eq 1
+      it 'assigns all kiqs to @kiqs' do
+        expect(assigns(:kiqs)).to match_array [kiq]
+      end
+
+      it 'assigns all requested kiqs to @requestedkiqs' do
+        expect(assigns(:requested_kiqs)).to eq [kiq]
       end
 
       it 'assigns conversation count to @conversation_count' do
         expect(assigns(:conversation_count)).to eq 1
+      end
+
+      it 'assigns client count to @client_count' do
+        stylist.users = []
+        stylist.users << user # necessary because send_message changes the stylist.users.count
+        get :dashboard
+        expect(assigns(:client_count)).to eq 1
       end
 
       it 'assigns current stylist to @stylist' do

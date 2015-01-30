@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   respond_to :html, :json, if: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :record_last_active_at
 
   def after_sign_in_path_for(resource)
     case resource
@@ -13,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
+  private
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) do |u|
         u.permit(:email, :password, :password_confirmation,
@@ -22,6 +23,10 @@ class ApplicationController < ActionController::Base
           :long_sleeve, :short_sleeve, :polo_shirt, :pants, :shorts,
           :smart_style, :casual_style, :hipster_style, :classic_style)
       end
+    end
+
+    def record_last_active_at
+      current_user.touch :last_active_at if current_user
     end
 
 end

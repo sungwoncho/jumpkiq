@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'shared/flash' %>
+    </div>
+
+    <h3>Clients</h3>
+
+    <div class="col-md-3">
+
+      <ul class='nav'>
+      </ul>
+
+    </div>
+
+    <div class="col-md-9 item-container">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Height/weight</th>
+            <th>Joined</th>
+            <th>Last active</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @users %>
+        </tbody>
+      </table>
+
+      <div>
+        <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+
+</div>
