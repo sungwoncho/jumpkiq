@@ -1,16 +1,13 @@
 'use strict'
 
 angular.module('jumpkiq')
-  .controller('messagesController', ['$scope', 'Messages', 'Conversations', 'flash', function ($scope, Messages, Conversations, flash) {
+  .controller('messagesController', ['$scope', 'Messages', 'flash', function ($scope, Messages, flash) {
 
     $scope.message = new Messages();
 
     $scope.sendMessage = function () {
-      $scope.message.$save(function () {
+      $scope.message.$save(function (response) {
         flash.success = 'Message sent!';
-
-        $scope.$parent.conversations = Conversations.query();
-
         $scope.message = new Messages();
       });
     };

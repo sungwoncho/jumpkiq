@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <aside class="col-md-3">
+      <div ng-include="'profile/partial/stylist.html'"></div>
+
+      <a class='btn btn-success' ng-controller='kiqsController' ng-click='requestKiq()'>Request a Kiq</a>
+      <a class='btn btn-default' ui-sref='profile.conversations'>Back</a>
+    </aside>
+
+    <div class="col-md-9" ng-controller='conversationsController'>
+      <div flash-alert active-class="in alert" class="fade text-center">
+        <span class="alert-message">{{ flash.message }}</span>
+      </div>
+
+
+      <div class='row'>
+        <div class="col-md-8">
+          <form ng-controller='messagesController' ng-submit='sendMessage()'>
+
+            <h3>Begin a new conversation with your stylist</h3>
+
+            <label for="subject">Subject</label>
+            <input type="text" id='subject' ng-model='message.subject' class='form-control'>
+
+            <label for="body">Message</label>
+            <textarea name="body" id="body" cols="30" rows="8" ng-model='message.body' class='form-control'></textarea>
+
+            <div class="form-actions">
+              <button type='submit' class='btn btn-info'>Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
