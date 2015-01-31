@@ -14,7 +14,9 @@ RSpec.describe KiqsMailer, :type => :mailer do
     end
 
     it 'sends an email' do
-      expect(ActionMailer::Base.deliveries.count).to eq 1
+      expect {
+        KiqsMailer.new_order(kiq).deliver_now
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
     it 'sends the mail to the stylist of the kiq' do
