@@ -7,7 +7,8 @@ angular
     'Devise',
     'angular-flash.service',
     'angular-flash.flash-alert-directive',
-    'angularPayments'
+    'angularPayments',
+    'angularSpinner'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'flashProvider', function($stateProvider, $urlRouterProvider, $locationProvider, flashProvider) {
 
@@ -71,12 +72,14 @@ angular
 
           .state('profile.edit.billing', {
             url: '/edit',
-            templateUrl: 'profile/edit_billing.html'
+            templateUrl: 'profile/edit_billing.html',
+            controller: 'customersController'
           })
 
           .state('profile.edit.shipping', {
             url: '/edit',
-            templateUrl: 'profile/edit_shipping.html'
+            templateUrl: 'profile/edit_shipping.html',
+            controller: 'addressesController'
           })
 
           .state('profile.edit.size', {
@@ -86,12 +89,14 @@ angular
 
         .state('profile.orders', {
           url: '/orders',
-          templateUrl: 'profile/orders.html'
+          templateUrl: 'profile/orders.html',
+          controller: 'kiqsController'
         })
 
         .state('profile.conversations', {
           url: '/conversations',
-          templateUrl: 'profile/conversations/index.html'
+          templateUrl: 'profile/conversations/index.html',
+          controller: 'conversationsController'
         })
 
         .state('profile.newConversation', {

@@ -2,7 +2,8 @@
   <span class="alert-message">{{ flash.message }}</span>
 </div>
 
-<div class="row" ng-controller='customersController'>
+<span us-spinner ng-show='loading'></span>
+<div class="row" ng-hide='loading'>
   <div class="col-md-6">
     <form stripe-form='handleStripe'>
 

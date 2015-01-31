@@ -2,9 +2,10 @@
   <span class="alert-message">{{ flash.message }}</span>
 </div>
 
-<div ng-controller='addressesController'>
+<span us-spinner ng-show='loading'></span>
+<div class='row' ng-hide='loading'>
   <div class="col-md-5">
-    <form id='profile-form' class='row' ng-submit='processAddressForm()'>
+    <form id='profile-form' ng-submit='processAddressForm()'>
 
       <h4>Your shipping address</h4>
 

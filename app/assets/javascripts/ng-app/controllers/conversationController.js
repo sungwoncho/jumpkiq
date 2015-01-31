@@ -1,6 +1,10 @@
 angular.module('jumpkiq')
   .controller('conversationController', ['$scope', '$http', '$stateParams', 'Conversations', 'Messages', 'flash', function ($scope, $http, $stateParams, Conversations, Messages, flash) {
-    $scope.conversation = Conversations.get({id: $stateParams.id});
+    $scope.loading = true;
+
+    $scope.conversation = Conversations.get({id: $stateParams.id}, function () {
+      $scope.loading = false;
+    });
 
     $scope.replyBody = '';
 

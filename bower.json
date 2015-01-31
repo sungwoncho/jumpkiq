@@ -14,7 +14,9 @@
       "angular-devise": "latest",
       "angular-resource": "latest",
       "angular-payments": "latest",
-      "jquery-easing": "latest"
+      "jquery-easing": "latest",
+      "spin.js": "latest",
+      "angular-spinner": "latest"
     }
   }
 }

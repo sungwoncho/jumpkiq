@@ -1,4 +1,8 @@
 angular.module('jumpkiq')
   .controller('conversationsController', ['$scope', 'Conversations', function ($scope, Conversations) {
-    $scope.conversations = Conversations.query();
+    $scope.loading = true;
+
+    $scope.conversations = Conversations.query(function () {
+      $scope.loading = false;
+    });
   }]);

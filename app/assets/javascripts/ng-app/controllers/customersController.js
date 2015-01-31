@@ -1,8 +1,11 @@
 angular.module('jumpkiq')
   .controller('customersController', ['$scope', 'Customers', 'flash', function ($scope, Customers, flash) {
 
+    $scope.loading = true;
+
     Customers.get().then(function (response) {
       $scope.customer = response.data;
+      $scope.loading = false;
     });
 
     $scope.handleStripe = function (status, response) {

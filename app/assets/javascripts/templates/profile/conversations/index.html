@@ -1,4 +1,5 @@
-<div class="container">
+<span us-spinner ng-show='loading'></span>
+<div class="container" ng-hide='loading'>
   <div class="row">
     <aside class="col-md-3">
       <div ng-include="'profile/partial/stylist.html'"></div>
@@ -7,7 +8,7 @@
       <a class='btn btn-default' ui-sref='profile.main'>Back</a>
     </aside>
 
-    <div class="col-md-9" ng-controller='conversationsController'>
+    <div class="col-md-9">
       <div flash-alert active-class="in alert" class="fade text-center">
         <span class="alert-message">{{ flash.message }}</span>
       </div>

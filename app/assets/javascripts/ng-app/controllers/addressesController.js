@@ -1,8 +1,11 @@
 angular.module('jumpkiq')
   .controller('addressesController', ['$scope', 'Addresses', 'flash', function ($scope, Addresses, flash) {
 
+    $scope.loading = true;
+
     Addresses.get({}, function(address) {
       $scope.address = address;
+      $scope.loading = false;
     });
 
     $scope.processAddressForm = function () {

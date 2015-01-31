@@ -1,7 +1,11 @@
 angular.module('jumpkiq')
   .controller('kiqsController', ['$scope', 'Kiqs', 'flash', function ($scope, Kiqs, flash) {
 
-    $scope.kiqs = Kiqs.query();
+    $scope.loading = true;
+
+    $scope.kiqs = Kiqs.query(function () {
+      $scope.loading = false;
+    });
 
     $scope.getKiqErrorMessage = function () {
       if (!$scope.user.order.has_style) {

@@ -23,4 +23,6 @@
 //= require angular-flash
 //= require angular-resource
 //= require angular-payments
+//= require spin.js/spin.js
+//= require angular-spinner
 //= require_tree .
