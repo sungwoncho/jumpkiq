@@ -33,7 +33,7 @@
       <ul>
         <li>Total orders: <%= @user.kiqs.count %></li>
         <li>Currently requested a Kiq? : <%= @user.requested_kiqs.present? %></li>
-        <li>Last ordered at: <%= @user.kiqs.last.created_at %></li>
+        <li>Last ordered at: <%= @user.kiqs.last.created_at if @user.kiqs.last %></li>
         <li>Last active at: <%= @user.last_active_at %></li>
       </ul>
 
