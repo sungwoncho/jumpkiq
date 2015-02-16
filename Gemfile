@@ -65,3 +65,4 @@ gem 'premailer-rails'
 gem 'mailboxer', git: 'https://github.com/div/mailboxer.git', branch: 'rails42-foreigner'
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
+gem 'coveralls', require: false
