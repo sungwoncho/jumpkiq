@@ -16,7 +16,7 @@ It received some orders and I was having fun. However, I could not assemble a te
 * Using AngularJS for front-end of some parts of the Rails application, powered by RESTful API.
 * Namespacing Controllers, routes, and views for APIs and standard HTTP requests.
 * Storing sensitive data in the environment variables (Use [fiagro](https://github.com/laserlemon/figaro) gem).
-* Unit-testing 3rd party APIs such as Stripe.
+* Continuous deployment using `staging` and `production` branches for different environment.
 
 
 ## Who are you?
