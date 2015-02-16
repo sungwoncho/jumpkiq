@@ -21,13 +21,12 @@ It received some orders and I was having fun. However, I could not assemble a te
 
 ## Who are you?
 
-I am a cool dude currently based in Sydney. I am interested in startups and want to build cool products. You can contact me on GitHub.
+I am a developer currently based in Sydney. I am interested in startups and want to build cool products. You can contact me on GitHub.
 
 
-## Fun fact
+#### Random fact
 
-The name was inspired by the Ruby background processing gem *Sidekiq*, but this project actually uses *SuckerPunch* instead of *Sidekiq*.
-
+The name was inspired by the gem *sidekiq* but this project uses *Sucker Punch* for background job processing.
 
 ## License
 
