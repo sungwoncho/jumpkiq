@@ -7,7 +7,7 @@ require 'rspec/rails'
 require "coveralls"
 
 # Measure test coverage with Coveralls
-Coveralls.wear!
+Coveralls.wear!('rails')
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
